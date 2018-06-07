@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="img/png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Tauri" rel="stylesheet">
+    <style media="screen">
+        *{
+          margin : 0 auto;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        body{
+          width: 100vw;
+        }
+        #fullPage {
+          width: 100%;
+        }
+        .section {
+          width: 100%;
+        }
+        .first {
+          background: url(img/car.jpeg);
+          background-repeat: repeat;
+          background-size: 100%;
+        }
+        .first h1{
+          display: block;
+          padding-top: 4px;
+          font-family: 'Tauri', sans-serif;
+          font-size: 140px;
+          /* color: black; */
+          color: #edeeef;
+          text-align: center
+
+
+        }
+        .bbtndiv{
+          width: 10%;
+          padding-top: 90px;
+        }
+        #bookbtn{
+          padding: 0 70px;
+          font-family: 'Tauri', sans-serif;
+          background-color: black;
+          color : #aa7322;
+          font-size: 50px;
+          text-align: center;
+          left: 50%;
+          border: 0;
+
+        }
+
+        .explainBox p {
+          width: 100%;
+          color : #edeeef;
+          font-size: 30px;
+          text-align: center;
+          display: block;
+          font-family: 'Tauri', sans-serif;
+          bottom: 80px;;
+          position: absolute;
+          text-align: center;
+
+        }
+        .fa {
+        padding: 40px;
+        }
+    </style>
+  </head>
+  <body>
+
+    <div id="fullpage">
+    	<div class="section first">
+        <h1><i class="fas fa-long-arrow-alt-down"></i>Welcome to xxxx</h1>
+        <div class="bbtndiv">
+          <button id="bookbtn"type="button" name="button">Book</button>
+        </div>
+        <i class="fas fa-long-arrow-alt-down"></i>
+        <div class="explainBox">
+          <p><i class="fa fa-arrow-down"></i>If you're wondering how to use xxxx<i class="fa fa-arrow-down"></i></p>
+        </div>
+
+      </div>
+    	<div class="section second" id="second">
+      </div>
+    </div>
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+              controlArrows: 'left',
+              css3: true,
+              navigationPosition: 'right',
+              fitToSection: true,
+              sectionsColor : ['#1bbc9b', '#aa7322', '#7BAABE', 'whitesmoke', '#ccddff'],
+              menu: '#menu',
+              scrollingSpeed: 1000,
+              continuousVertical: false,
+
+              //design
+              controlArrows: true,
+
+            });
+        });
+    </script>
+
+  </body>
+</html>
