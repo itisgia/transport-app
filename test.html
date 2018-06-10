@@ -1,92 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
-    <link rel="shortcut icon" href="img/favicon.ico" type="img/png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Cabin+Condensed" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Tauri" rel="stylesheet">
-    <style media="screen">
-        *{
-          margin : 0 auto;
-          padding: 0;
-          box-sizing: border-box;
-        }
-        body{
-          width: 100vw;
-        }
-        #fullPage {
-          width: 100%;
-        }
-        .section {
-          width: 100%;
-        }
-        .first {
-          background: url(img/car.jpeg);
-          background-repeat: repeat;
-          background-size: 100%;
-        }
-        .first h1{
-          display: block;
-          padding-top: 180px;
-          font-family: 'Tauri', sans-serif;
-          font-size: 40px;
-          color: #edeeef;
-          text-align: center
-
-
-        }
-        .bbtndiv{
-          width: 10%;
-        }
-        #bookbtn{
-          padding: 0 40px;
-          font-family: 'Tauri', sans-serif;
-          background-color: black;
-          color : #edeeef;
-          font-size: 50px;
-          text-align: center;
-          left: 50%;
-          border: 0;
-
-        }
-
-        .explainBox {
-          width: 100%;
-          color : #edeeef;
-          font-size: 30px;
-          text-align: center;
-          display: block;
-          font-family: 'Tauri', sans-serif;
-          bottom: 80px;;
-
-          text-align: center;
-
-        }
-
-    </style>
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+  <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js"
+  type="text/javascript" charset="utf-8"></script>
+  <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js"
+  type="text/javascript" charset="utf-8"></script>
+  <style>
+    body { margin:0; padding:0; }
+    #map { position:absolute; top:0; bottom:0; width:100%; }
+  </style>
   </head>
   <body>
+  <div style="width: 640px; height: 480px" id="mapContainer"></div>
+  <script>
+    // Initialize the platform object:
+    var platform = new H.service.Platform({
+    'app_id': 'NAXppHxemQGgtv843EFt',
+    'app_code': 'cFkkbbOVzChOlSq_FhWwXg'
+    });
 
-    <div id="fullpage">
-    	<div class="section first">
-        <h1><i class="fa fa-car"></i>Welcome</h1>
-        <div class="bbtndiv">
-          <button id="bookbtn"type="button" name="button">Book</button>
-        </div>
-        <div class="explainBox">
-          <p><i class="fa fa-arrow-down"></i>
+    // Obtain the default map types from the platform object
+    var maptypes = platform.createDefaultLayers();
 
-If you're wondering how to use xxx</p>
-        </div>
-
-      </div>
-    	<div class="section second">
-      </div>
-    </div>
-
+    // Instantiate (and display) a map object:
+    var map = new H.Map(
+    document.getElementById('mapContainer'),
+    maptypes.normal.map,
+    {
+      zoom: 10,
+      center: { lng: 13.4, lat: 52.51 }
+    });
+  </script>
   </body>
 </html>

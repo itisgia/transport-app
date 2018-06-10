@@ -1,5 +1,5 @@
 
-
+//Data
 var vehicles = {
   motorbike :{
     person : 1 ,
@@ -33,3 +33,12 @@ var vehicles = {
     fuel : 17
   }
 }
+
+// SETTING UP MAP ---------------------------------------------------------------
+    mapboxgl.accessToken = 'pk.eyJ1IjoiaXRpc2dpYSIsImEiOiJjamk0MnpkZDgwMXJ6M3Jta3U5djF4aGtoIn0.kT6tUJYJk4_0LMg6INadbA'
+    var map = new mapboxgl.Map({
+      container: 'map', // container id
+      style: 'mapbox://styles/itisgia/cji43brtl104l2rofjzx1z6ao', // stylesheet location
+      center: [174.780651, -41.278932], // starting position [lng, lat]
+      zoom: 6.76// starting zoom
+    });
