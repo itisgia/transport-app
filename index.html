@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
+    <title>Carro</title>
     <link rel="shortcut icon" href="img/favicon.ico" type="img/png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,13 +25,12 @@
           width: 100%;
         }
         .first {
-          background: url(img/car.jpeg);
+          background: url(img/carr.jpeg);
           background-repeat: repeat;
           background-size: 100%;
         }
         .first h1{
           display: block;
-          padding-top: 4px;
           font-family: 'Tauri', sans-serif;
           font-size: 140px;
           /* color: black; */
@@ -48,22 +47,24 @@
           padding: 0 70px;
           font-family: 'Tauri', sans-serif;
           background-color: black;
-          color : #aa7322;
+          color : #e78205;
           font-size: 50px;
           text-align: center;
-          left: 50%;
+          left: 30%;
+          right: 50%;
           border: 0;
 
         }
 
         .explainBox p {
           width: 100%;
-          color : #edeeef;
+          /* color : #edeeef; */
+          color: white;
           font-size: 30px;
           text-align: center;
           display: block;
           font-family: 'Tauri', sans-serif;
-          bottom: 80px;;
+          bottom: 30px;
           position: absolute;
           text-align: center;
 
@@ -71,13 +72,21 @@
         .fa {
         padding: 40px;
         }
+
+        #carroimg {
+          display: block;
+          width: 500px;
+          padding-top: 40px;
+
+        }
     </style>
   </head>
   <body>
 
     <div id="fullpage">
     	<div class="section first">
-        <h1><i class="fas fa-long-arrow-alt-down"></i>Welcome to xxxx</h1>
+        <h1><i class="fas fa-long-arrow-alt-down"></i>Welcome to </h1>
+        <img id="carroimg"src="img/carro.png" alt="carroLogo">
         <div class="bbtndiv">
           <a href="transport.html">
             <button id="bookbtn"type="button" name="button">Book</button>
@@ -85,7 +94,7 @@
         </div>
         <i class="fas fa-long-arrow-alt-down"></i>
         <div class="explainBox">
-          <p><i class="fa fa-arrow-down"></i>If you're wondering how to use xxxx<i class="fa fa-arrow-down"></i></p>
+          <p><i class="fa fa-arrow-down"></i>If you're wondering how to use Carro <i class="fa fa-arrow-down"></i></p>
         </div>
 
       </div>
@@ -105,7 +114,7 @@
               css3: true,
               navigationPosition: 'right',
               fitToSection: true,
-              sectionsColor : ['#1bbc9b', '#aa7322'],
+              sectionsColor : ['#1bbc9b', '#e78205'],
               menu: '#menu',
               scrollingSpeed: 1000,
               continuousVertical: false,

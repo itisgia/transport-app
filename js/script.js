@@ -35,10 +35,31 @@ var vehicles = {
 }
 
 // SETTING UP MAP ---------------------------------------------------------------
-    mapboxgl.accessToken = 'pk.eyJ1IjoiaXRpc2dpYSIsImEiOiJjamk0MnpkZDgwMXJ6M3Jta3U5djF4aGtoIn0.kT6tUJYJk4_0LMg6INadbA'
-    var map = new mapboxgl.Map({
-      container: 'map', // container id
-      style: 'mapbox://styles/itisgia/cji43brtl104l2rofjzx1z6ao', // stylesheet location
-      center: [174.780651, -41.278932], // starting position [lng, lat]
-      zoom: 6.76// starting zoom
-    });
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiamlhaGt3b24iLCJhIjoiY2ppOWR0b3Q2MHZoeTNwcGFwdjRqcGx2YyJ9.OCQ5S6NvpQir0tyfiUD3vQ';
+
+// works within NZ
+// var bounds = [
+//   [-34.23025627,172.43635083],
+//   [-47.29064213,167.27277661]
+// ]
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/jiahkwon/cji9fzmxi2hdd2smlfizy96tl'
+// maxBounds: bounds
+
+});
+
+
+// Add MapboxDirections
+map.addControl(new MapboxDirections({
+    accessToken: mapboxgl.accessToken
+}), 'top-right');
+//miles to km
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+var nextArrow = document.querySelector('.fa-angle-right');
+console.dir(nextArrow);
