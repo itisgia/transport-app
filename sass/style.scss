@@ -26,6 +26,7 @@ $primary-font: 'PT Sans', sans-serif;
   height: 100vh;
   background-color: #e78205;
   opacity: 0.8;
+
 }
 
 #startPoint {
@@ -127,5 +128,24 @@ h2 {
   height: 50px;
   background-color: transparent;
   border: 2px solid #212529;
+
+}
+
+//------------------------second date picker form------------------------
+
+.dateinputs {
+  display: block;
+
+
+}
+.datePick {
+  width: 50%;
+  padding: 20px;
+  border-radius: 50px;
+  text-align: center;
+  font-family: $primary-font;
+  background: transparent;
+  border : 2px solid #212529;
+  margin-left: 25%;
 
 }

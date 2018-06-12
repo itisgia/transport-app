@@ -61,5 +61,14 @@ map.addControl(new MapboxDirections({
 //--------------------------------------------------------------------------------------------------
 
 
-var nextArrow = document.querySelector('.fa-angle-right');
-console.dir(nextArrow);
+// var nextArrow = document.querySelector('.fa-angle-right');
+// console.dir(nextArrow);
+
+
+
+//-------------------date picker
+$( function() {
+  $( "#datepicker" ).datepicker();
+  $( "#datepickerB" ).datepicker();
+
+});
