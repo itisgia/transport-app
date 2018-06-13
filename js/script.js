@@ -33,70 +33,95 @@ var vehicles = {
     fuel : 17
   }
 }
+//
+// // SETTING UP MAP ---------------------------------------------------------------
+//
+// mapboxgl.accessToken = 'pk.eyJ1IjoiamlhaGt3b24iLCJhIjoiY2ppOWR0b3Q2MHZoeTNwcGFwdjRqcGx2YyJ9.OCQ5S6NvpQir0tyfiUD3vQ';
+//
+// // works within NZ
+// // var bounds = [
+// //   [-34.23025627,172.43635083],
+// //   [-47.29064213,167.27277661]
+// // ]
+// var map = new mapboxgl.Map({
+// container: 'map',
+// style: 'mapbox://styles/jiahkwon/cji9fzmxi2hdd2smlfizy96tl'
+// // maxBounds: bounds
+//
+// });
+//
+//
+// // Add MapboxDirections
+// map.addControl(new MapboxDirections({
+//     accessToken: mapboxgl.accessToken
+// }), 'top-right');
+// //miles to km
 
-// SETTING UP MAP ---------------------------------------------------------------
+//-------------------date picker--------
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiamlhaGt3b24iLCJhIjoiY2ppOWR0b3Q2MHZoeTNwcGFwdjRqcGx2YyJ9.OCQ5S6NvpQir0tyfiUD3vQ';
-
-// works within NZ
-// var bounds = [
-//   [-34.23025627,172.43635083],
-//   [-47.29064213,167.27277661]
-// ]
-var map = new mapboxgl.Map({
-container: 'map',
-style: 'mapbox://styles/jiahkwon/cji9fzmxi2hdd2smlfizy96tl'
-// maxBounds: bounds
+$( function() {
+  $( "#datepicker" ).datepicker();
+  $( "#datepickerB" ).datepicker();
 
 });
 
-
-// Add MapboxDirections
-map.addControl(new MapboxDirections({
-    accessToken: mapboxgl.accessToken
-}), 'top-right');
-//miles to km
-
-
+//--fullPage
+// $(document).ready(function() {
+//     $('#fullpage').fullpage({
+//       controlArrows: 'left',
+//       css3: true,
+//       navigationPosition: 'right',
+//       fitToSection: true,
+//       sectionsColor : ['#1bbc9b', '#e78205'],
+//       menu: '#menu',
+//       scrollingSpeed: 1000,
+//       continuousVertical: false,
+//
+//       //design
+//       controlArrows: true,
+//
+//     });
+// });
 //--------form page function------------------------------------------------------------------------------------------
 
 
 var nextArrow = document.querySelector('.fa-angle-right');
 var previousArrow = document.querySelector('.fa-angle-left');
 var formpages = document.querySelectorAll('.page');
-var currentPage = 0; // currentpage shows
+var directionsBtn = document.querySelectorAll('.pageDirection');
+var formArray = [];
+var nextArrowArray = [];
+var currentPage = 0 ; // currentpage shows
+
+
+//storing form page in to Array
+
+  formArray.push(formpages);
+  console.log(formArray);
 
 
 
-function pageShow (n) {
-  formpages[n].style.display = 'block';
-  if (n == 0) {
-    previousArrow.style.display = 'none';
-  } else {
-    previousArrow.style.display = 'block';
+
+ // show just one div
+
+function CurrentPageShow(){
+  if (formArray["0"][0]) {
+     formArray["0"][1].style.display = 'none';
+     formArray["0"][2].style.display = 'none';
+     previousArrow.style.display = 'none';
   }
 }
 
-pageShow();
+CurrentPageShow()
 
 // when next arrow is clicked. show next pages.
 nextArrow.addEventListener('click' , nextPageArrow , false);
 
-
-function nextPageArrow(n) {
-    if (n == 1) {
+function nextPageArrow() {
+  console.log(formArray);
+    nextArrowArray.push(nextArrow);
+    console.log(nextArrowArray);
+    if (nextArrowArray) {
 
     }
-
-
 }
-
-
-
-
-//-------------------date picker--------
-$( function() {
-  $( "#datepicker" ).datepicker();
-  $( "#datepickerB" ).datepicker();
-
-});
