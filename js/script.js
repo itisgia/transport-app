@@ -64,28 +64,30 @@ map.addControl(new MapboxDirections({
 var nextArrow = document.querySelector('.fa-angle-right');
 var previousArrow = document.querySelector('.fa-angle-left');
 var formpages = document.querySelectorAll('.page');
-var currentPage;
+var currentPage = 0; // currentpage shows
 
-// show only first page and hide all but first one
-pageShow();
 
-function pageShow () {
-  for (var i = 0; i < formpages.length; i++) {
-    formpages[i].style.display = 'none'
-    if (formpages[0]) {
-       formpages[0].style.display = 'block'
-    }
+
+function pageShow (n) {
+  formpages[n].style.display = 'block';
+  if (n == 0) {
+    previousArrow.style.display = 'none';
+  } else {
+    previousArrow.style.display = 'block';
   }
 }
+
+pageShow();
 
 // when next arrow is clicked. show next pages.
 nextArrow.addEventListener('click' , nextPageArrow , false);
 
 
-function nextPageArrow() {
-    for (var i = 0; i < nextArrow.length; i++) {
-      console.log('clicked');
+function nextPageArrow(n) {
+    if (n == 1) {
+
     }
+
 
 }
 
