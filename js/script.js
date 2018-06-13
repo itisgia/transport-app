@@ -58,15 +58,41 @@ map.addControl(new MapboxDirections({
 //miles to km
 
 
-//--------------------------------------------------------------------------------------------------
+//--------form page function------------------------------------------------------------------------------------------
 
 
-// var nextArrow = document.querySelector('.fa-angle-right');
-// console.dir(nextArrow);
+var nextArrow = document.querySelector('.fa-angle-right');
+var previousArrow = document.querySelector('.fa-angle-left');
+var formpages = document.querySelectorAll('.page');
+var currentPage;
+
+// show only first page and hide all but first one
+pageShow();
+
+function pageShow () {
+  for (var i = 0; i < formpages.length; i++) {
+    formpages[i].style.display = 'none'
+    if (formpages[0]) {
+       formpages[0].style.display = 'block'
+    }
+  }
+}
+
+// when next arrow is clicked. show next pages.
+nextArrow.addEventListener('click' , nextPageArrow , false);
+
+
+function nextPageArrow() {
+    for (var i = 0; i < nextArrow.length; i++) {
+      console.log('clicked');
+    }
+
+}
 
 
 
-//-------------------date picker
+
+//-------------------date picker--------
 $( function() {
   $( "#datepicker" ).datepicker();
   $( "#datepickerB" ).datepicker();
