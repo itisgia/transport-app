@@ -89,30 +89,25 @@ var nextArrow = document.querySelector('.fa-angle-right');
 var previousArrow = document.querySelector('.fa-angle-left');
 var formpages = document.querySelectorAll('.page');
 var directionsBtn = document.querySelectorAll('.pageDirection');
-var formArray = [];
+var formArray = [].slice.call(formpages);
 var nextArrowArray = [];
 var currentPage = 0 ; // currentpage shows
-
 
 //storing form page in to Array
 
   formArray.push(formpages);
-  console.log(formArray);
-
-
-
 
  // show just one div
 
 function CurrentPageShow(){
-  if (formArray["0"][0]) {
-     formArray["0"][1].style.display = 'none';
-     formArray["0"][2].style.display = 'none';
+  if (formArray[0]) {
+     formArray[1].style.display = 'none';
+     formArray[2].style.display = 'none';
      previousArrow.style.display = 'none';
   }
 }
-
 CurrentPageShow()
+
 
 // when next arrow is clicked. show next pages.
 nextArrow.addEventListener('click' , nextPageArrow , false);
@@ -121,7 +116,16 @@ function nextPageArrow() {
   console.log(formArray);
     nextArrowArray.push(nextArrow);
     console.log(nextArrowArray);
-    if (nextArrowArray) {
-
+    for (var i = 0; i < nextArrowArray.length; i++) {
+      if ((formArray.length == 1 ) < (nextArrowArray.length == 1 )) {
+        console.log('1');
+        formArray[0].style.display = 'none';
+        formArray[1].style.display = 'block';
+        formArray[2].style.display = 'none';
+      } else if ((formArray.length == 2 ) < (nextArrowArray.length == 2 )) {
+        formArray[0].style.display = 'none';
+        formArray[1].style.display = 'none';
+        formArray[2].style.display = 'block';
+      }
     }
 }
