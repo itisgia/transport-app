@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.css' type='text/css' />
   <link rel="stylesheet" href="css/style.css">
@@ -23,10 +24,13 @@
           <div class="page">
               <div class="dateinputs">
                 <p>How long are you traveling with Carro?</p>
-                <p>From</p>
-                <input class="datePick"type="text" value="start date" id="datepicker">
-                <p> To</p>
-                <input class="datePick" type="text" value="End date" id="datepickerB">
+                <div class="dateDiv">
+                  <p>From</p>
+                  <input class="datePick"type="text" value="start date" id="datepicker">
+                  <p> To</p>
+                  <input class="datePick" type="text" value="End date" id="datepickerB">
+                </div>
+
 
             </div>
         </div>
@@ -39,7 +43,7 @@
                       <i class="fa fa-minus" aria-hidden="true"></i>
                     </button>
                   </div>
-                  <input class="input-group-field" type="number" name="quantity" value="0">
+                  <input id="inputField"class="input-group-field" type="number" name="quantity" value="0">
                   <div class="input-group-button">
                     <button type="button" class="buttonCircle" data-quantity="plus" data-field="quantity">
                       <i class="fa fa-plus" aria-hidden="true"></i>
@@ -50,23 +54,25 @@
         </div>
         <div class="page">
             <div class="carinputs">
-              <p>Which car</p>
-              <button id="bike"type="button" name="button">
-                <img src="img/bike.png" alt="bike">
-                <p>Bike</p>
-              </button>
-              <button  id="smallCar"type="button" name="button">
-                <img src="img/smallCar.png" alt="smallCar">
-                <p>Small Car</p>
-              </button>
-              <button id="largeCar"type="button" name="button">
-                <img src="img/largeCar.png" alt="largeCar">
-                <p>Large Car</p>
-              </button>
-              <button id="motorHome"type="button" name="button">
-                <img src="img/motorHome.webp" alt="motorHome">
-                <p>Motor Home</p>
-              </button>
+              <p>What car would you like to drive?</p>
+              <div class="carDiv">
+                <button id="bike"type="button" name="button">
+                  <img src="img/bike.png" alt="bike">
+                  <p>Bike</p>
+                </button>
+                <button  id="smallCar"type="button" name="button">
+                  <img src="img/smallCar.png" alt="smallCar">
+                  <p>Small Car</p>
+                </button>
+                <button id="largeCar"type="button" name="button">
+                  <img src="img/largeCar.png" alt="largeCar">
+                  <p>Large Car</p>
+                </button>
+                <button id="motorHome"type="button" name="button">
+                  <img src="img/motorHome.webp" alt="motorHome">
+                  <p>Motor Home</p>
+                </button>
+              </div>
           </div>
       </div>
 

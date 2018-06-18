@@ -114,9 +114,9 @@ previousArrow.addEventListener('click' , backArrow , false);
 
 // when right arrow is clicked, move to next page
 function nextPageArrow() {
-  console.log(formArray);
+  // console.log(formArray);
     nextArrowArray.push(nextArrow);
-    console.log(nextArrowArray);
+    // console.log(nextArrowArray);
     //hide and show divs
       previousArrow.style.display = 'block';
       if ((formArray.length == 1 ) < (nextArrowArray.length <= 1 )) {
@@ -148,3 +148,54 @@ function backArrow () {
     }
   }
 }
+
+
+// input button
+
+var inputNum = document.querySelector('.input-group-field');
+var currentVal = parseInt(inputNum.value);
+
+// when plus is clicked, value increased
+$('[data-quantity="plus"]').click(function(e){
+  e.preventDefault(); // stop oreventing it working as
+  if (inputNum.value !== NaN) {
+      $('#inputField').val(currentVal +=1);
+  } else {
+      $('#inputField').val(0);
+  }
+
+});
+
+
+// when minus is clicked, value decreased
+$('[data-quantity="minus"]').click(function(e){
+    e.preventDefault(); // stop oreventing it working as
+    if (inputNum.value > 0 ) {
+        $('#inputField').val(currentVal += -1);
+    }else {
+        $('#inputField').val(0);
+    }
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// $(.fa-plus).click(function(){
+//   console.log('clicked');
+// })

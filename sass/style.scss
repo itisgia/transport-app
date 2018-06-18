@@ -19,6 +19,7 @@ $primary-font: 'PT Sans', sans-serif;
   bottom: 0;
   width: 100%; }
 
+//left yellow box
 .selection {
   position: absolute;
   z-index: 999999;
@@ -31,29 +32,36 @@ $primary-font: 'PT Sans', sans-serif;
 
 #startPoint {
   width: 90%;
-  display: bloxk;
+  display: block;
   color : grey;
 }
+
 .mapbox-directions-clearfix {
   display: none;
 }
 
-
 .mapbox-directions-instructions-wrapper {
   display: none;
 }
+
+
 p {
   font-family: $primary-font;
   font-size: 20px;
   text-align: center;
+
 }
+
 h2 {
+  letter-spacing: 3px!important;
   display: block;
   font-family: $primary-font;
+  font-weight: 600;
   font-size: 80px;
   text-align: center;
   letter-spacing: 5px;
-  margin-top: 30%;
+  margin-top: 20%;
+  padding-bottom: 13%;
 }
 
 //Bootm arrow and dots
@@ -176,17 +184,28 @@ h2 {
 // }
 
 //------------------------first form------------------------
-
+.dateDiv {
+  margin-top: 10%;
+  p {
+    display: block;
+    margin-top: 9%;
+  }
+}
 .input-group-field {
   text-align: center;
+  width: 25%;
 }
 // plus, minus
 .plus-minus-input {
-
-  left: 20%;
-  right: 20%;
+  margin-top: 10%;
+  left: 24%;
+  right: 24%;
   margin-top: 30%;
-
+  .input-group-field{
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+  }
 }
 
 .buttonCircle {
@@ -217,7 +236,10 @@ h2 {
 
 }
 //---------------------------------------car selection-----------------
-
+.carDiv{
+  margin-top: 3%;
+  margin-left: 7%;
+}
 .carinputs{
   position: absolute;
   margin: 0 auto;

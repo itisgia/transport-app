@@ -24,7 +24,7 @@
 
 #startPoint {
   width: 90%;
-  display: bloxk;
+  display: block;
   color: grey; }
 
 .mapbox-directions-clearfix {
@@ -39,12 +39,15 @@ p {
   text-align: center; }
 
 h2 {
+  letter-spacing: 3px !important;
   display: block;
   font-family: "PT Sans", sans-serif;
+  font-weight: 600;
   font-size: 80px;
   text-align: center;
   letter-spacing: 5px;
-  margin-top: 30%; }
+  margin-top: 20%;
+  padding-bottom: 13%; }
 
 .bottomFIx {
   position: absolute;
@@ -86,13 +89,25 @@ h2 {
   opacity: 0.5;
   bottom: 0; }
 
+.dateDiv {
+  margin-top: 10%; }
+  .dateDiv p {
+    display: block;
+    margin-top: 9%; }
+
 .input-group-field {
-  text-align: center; }
+  text-align: center;
+  width: 25%; }
 
 .plus-minus-input {
-  left: 25%;
-  right: 25%;
+  margin-top: 10%;
+  left: 24%;
+  right: 24%;
   margin-top: 30%; }
+  .plus-minus-input .input-group-field {
+    background-color: transparent;
+    border: none;
+    font-size: 30px; }
 
 .buttonCircle {
   border-radius: 50%;
@@ -113,6 +128,10 @@ h2 {
   background: transparent;
   border: 2px solid #212529;
   margin-left: 25%; }
+
+.carDiv {
+  margin-top: 3%;
+  margin-left: 7%; }
 
 .carinputs {
   position: absolute;
