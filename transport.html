@@ -20,15 +20,16 @@
       </div>
       <div class="selection">
         <h2>Carro</h2>
-        <form class="" action="" method="post">
+        <form class="needs-validation" novalidate>
           <div class="page">
               <div class="dateinputs">
                 <p>How long are you traveling with Carro?</p>
                 <div class="dateDiv">
                   <p>From</p>
-                  <input class="datePick"type="text" value="start date" id="datepicker">
+                  <input class="datePick"type="text" placeholder="Start Date" id="datepicker" required>
+                  <p id="invalidText"></p>
                   <p> To</p>
-                  <input class="datePick" type="text" value="End date" id="datepickerB">
+                  <input class="datePick" type="text" placeholder="End Date" id="datepickerB" required>
                 </div>
 
 
@@ -43,7 +44,7 @@
                       <i class="fa fa-minus" aria-hidden="true"></i>
                     </button>
                   </div>
-                  <input id="inputField"class="input-group-field" type="number" name="quantity" value="0">
+                  <input id="inputField"class="input-group-field" type="number" name="quantity" value="1">
                   <div class="input-group-button">
                     <button type="button" class="buttonCircle" data-quantity="plus" data-field="quantity">
                       <i class="fa fa-plus" aria-hidden="true"></i>
@@ -82,14 +83,14 @@
               <i class="fa fa-angle-left"></i>
               <i class="fa fa-angle-right"></i>
             </div>
-            <div class="dots">
+            <!-- <div class="dots">
                 <span class="step"></span>
                 <span class="step"></span>
                 <span class="step"></span>
                 <span class="step"></span>
                 <span class="step"></span>
-                <!-- <span class="step"></span> -->
-          </div>
+
+          </div> -->
         </div>
 
       </div>

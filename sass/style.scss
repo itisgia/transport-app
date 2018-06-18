@@ -61,7 +61,7 @@ h2 {
   text-align: center;
   letter-spacing: 5px;
   margin-top: 20%;
-  padding-bottom: 13%;
+  padding-bottom: 9%;
 }
 
 //Bootm arrow and dots
@@ -184,6 +184,10 @@ h2 {
 // }
 
 //------------------------first form------------------------
+
+#invalidText{
+  color: #a00303;
+}
 .dateDiv {
   margin-top: 10%;
   p {
@@ -215,6 +219,12 @@ h2 {
   background-color: transparent;
   border: 2px solid #212529;
 
+}
+
+//datepicker color remove
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+
+    background-color: none !important;
 }
 
 //------------------------second date picker form------------------------

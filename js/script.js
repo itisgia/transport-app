@@ -63,6 +63,9 @@ $( function() {
 
 });
 
+//date validation
+
+
 //--fullPage
 // $(document).ready(function() {
 //     $('#fullpage').fullpage({
@@ -80,7 +83,7 @@ $( function() {
 //
 //     });
 // });
-//--------form page function------------------------------------------------------------------------------------------
+// --------form page function------------------------------------------------------------------------------------------
 
 
 var nextArrow = document.querySelector('.fa-angle-right');
@@ -108,35 +111,47 @@ function CurrentPageShow(){
 CurrentPageShow()
 
 
+//validate Form
+var text;
+function validateForm(){
+  var vali = document.getElementById('datepicker');
+  if (vali.value == '') {
+    text = 'Please input something!'
+    // alert('add start Date')
+  }
+   document.getElementById('invalidText').innerHTML = text;
+}
+
+
+
 // when next arrow is clicked. show next pages.
 nextArrow.addEventListener('click' , nextPageArrow , false);
 previousArrow.addEventListener('click' , backArrow , false);
 
 // when right arrow is clicked, move to next page
 function nextPageArrow() {
-  // console.log(formArray);
+  console.log(formArray);
     nextArrowArray.push(nextArrow);
-    // console.log(nextArrowArray);
+    console.log(nextArrowArray);
     //hide and show divs
       previousArrow.style.display = 'block';
-      if ((formArray.length == 1 ) < (nextArrowArray.length <= 1 )) {
+      if ((formArray.length == 1 ) < (nextArrowArray.length == 1 )) {
         formArray[0].style.display = 'none';
         formArray[1].style.display = 'block';
         formArray[2].style.display = 'none';
 
-      } else if ((formArray.length == 2 ) < (nextArrowArray.length <=2 )) {
+      } else if ((formArray.length == 2 ) < (nextArrowArray.length ==2 )) {
         formArray[0].style.display = 'none';
         formArray[1].style.display = 'none';
         formArray[2].style.display = 'block';
       }
-
+ validateForm();
 }
 
 
 function backArrow () {
   previousArrowArray.push(previousArrow);
   console.log(previousArrowArray);
-  for (var i = 0; i < previousArrowArray.length; i++) {
     if ((formArray[0] ) && (previousArrowArray[0]) ) {
       formArray[0].style.display = 'block';
       formArray[1].style.display = 'none';
@@ -146,56 +161,29 @@ function backArrow () {
       formArray[1].style.display = 'block';
       formArray[2].style.display = 'none';
     }
-  }
 }
 
 
-// input button
-
+//------------------------ input button
 var inputNum = document.querySelector('.input-group-field');
-var currentVal = parseInt(inputNum.value);
+var currentValue = parseInt(inputNum.value);
 
 // when plus is clicked, value increased
 $('[data-quantity="plus"]').click(function(e){
-  e.preventDefault(); // stop oreventing it working as
-  if (inputNum.value !== NaN) {
-      $('#inputField').val(currentVal +=1);
+  e.preventDefault(); // stop preventing it working as
+  if (inputNum.value < 6 ) {
+      $('#inputField').val(currentValue +=1);
   } else {
-      $('#inputField').val(0);
+      $('#inputField').val(currentValue = 1);
   }
-
 });
-
 
 // when minus is clicked, value decreased
 $('[data-quantity="minus"]').click(function(e){
-    e.preventDefault(); // stop oreventing it working as
-    if (inputNum.value > 0 ) {
-        $('#inputField').val(currentVal += -1);
-    }else {
-        $('#inputField').val(0);
+    e.preventDefault(); // stop preventing it working as
+    if (inputNum.value > 1 ) {
+        $('#inputField').val(currentValue += -1);
+    } else {
+        $('#inputField').val(currentValue = 1);
     }
-
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// $(.fa-plus).click(function(){
-//   console.log('clicked');
-// })
