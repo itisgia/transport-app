@@ -195,16 +195,27 @@ h2 {
     margin-top: 9%;
   }
 }
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: black;
+
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: black;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: black;
+}
 .input-group-field {
   text-align: center;
   width: 25%;
 }
 // plus, minus
 .plus-minus-input {
-  margin-top: 10%;
   left: 24%;
   right: 24%;
-  margin-top: 30%;
+  margin-top: 10%;
   .input-group-field{
     background-color: transparent;
     border: none;
@@ -245,9 +256,14 @@ h2 {
   margin-left: 25%;
 
 }
+.numberOfPeople{
+  p{
+    padding-top: 13%;
+  }
+}
 //---------------------------------------car selection-----------------
 .carDiv{
-  margin-top: 3%;
+  margin-top: 9%;
   margin-left: 7%;
 }
 .carinputs{
@@ -273,4 +289,13 @@ h2 {
       letter-spacing: 3px;
     }
   }
+}
+
+
+//form validate css
+.page{
+  display: none;
+}
+input.invalid {
+  background-color: #6d281c;
 }
