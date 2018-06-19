@@ -1,37 +1,4 @@
-var vehicles = {
-  motorbike :{
-    person : 1 ,
-    day :[1, 2, 3, 4, 5],
-    price : 109,
-    distance : 100,
-    fuel : 3.7
 
-  },
-  smallCard : {
-    person : [1,2],
-    day : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    price : 129,
-    distance : 100,
-    fuel : 8.5
-
-  },
-  largeCar : {
-    person : [1, 2, 3, 4, 5],
-    day : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    price : 144,
-    distance : 100,
-    fuel : 9.7
-  },
-
-  motorHome : {
-    person : [2, 3, 4, 5, 6],
-    day : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 , 16],
-    price : 200,
-    distance : 100,
-    fuel : 17
-  }
-}
-//
 // // SETTING UP MAP ---------------------------------------------------------------
 //
 mapboxgl.accessToken = 'pk.eyJ1IjoiamlhaGt3b24iLCJhIjoiY2ppOWR0b3Q2MHZoeTNwcGFwdjRqcGx2YyJ9.OCQ5S6NvpQir0tyfiUD3vQ';
@@ -95,35 +62,16 @@ var directionsBtn = document.querySelectorAll('.pageDirection');
 var formArray = [].slice.call(formpages);
 var currentPage = 0 ; // currentpage shows
 
-
-//storing form page in to Array
-  formArray.push(formpages);
-
  // show just one div
 
-function CurrentPageShow(){
-  if (formArray[0]) {
-     formArray[1].style.display = 'none';
-     formArray[2].style.display = 'none';
-     previousArrow.style.display = 'none';
-  }
-}
-CurrentPageShow()
-
-
-//validate Form
-var text;
-function validateForm(){
-  var vali = document.getElementById('datepicker');
-  if (vali.value == '') {
-    text = 'Please input something!'
-    // alert('add start Date')
-  }
-   document.getElementById('invalidText').innerHTML = text;
-}
-
-
-
+// function CurrentPageShow(){
+//   if (formArray[0]) {
+//      formArray[1].style.display = 'none';
+//      formArray[2].style.display = 'none';
+//      previousArrow.style.display = 'none';
+//   }
+// }
+// CurrentPageShow()
 
 //---------------------------- form validation and page steps form w3 school
 
@@ -136,14 +84,15 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
   // This function will display the specified tab of the form...
   x[n].style.display = "block";
   //... and fix the Previous/Next buttons:
-  if (n == 0) {
-    document.querySelector('.fa-angle-left').style.display = "none";
-  } else {
-    document.querySelector('.fa-angle-left').style.display = "block";
-  }
-  if (n == (x.length - 1)) {
-    document.querySelector('.fa-angle-right').style.display = "inline";
-  }
+    if (n == 0) {
+      document.querySelector('.fa-angle-left').style.display = "none";
+    } else {
+      document.querySelector('.fa-angle-left').style.display = "block";
+    }
+    if (n == (x.length - 1)) {
+    document.querySelector('.fa-angle-right').style.display = "none";
+
+    }
 
   }
 
@@ -268,3 +217,32 @@ function checked (){
   }//for loop ENDS
 }//function ENDS
 checked();
+
+
+//trip.js
+$(function() {
+        var trip = new Trip([
+          {
+            sel: $('.mapbox-directions-origin'),
+            content: 'Choose your route!',
+            // expose: true,
+            position: 'w'
+          },
+        ], {
+          delay: -1,
+          showCloseBox: true
+        });
+        trip.start();
+    });
+
+
+//if I'm ready btn is clicked, show Results
+
+var subBtn = document.querySelector('.submitBtn');
+console.log(subBtn);
+var formDiv = document.querySelector('.needs-validation');
+console.dir(formDiv);
+
+subBtn.addEventListener('click', function (){
+  console.log('clicked');
+},false)

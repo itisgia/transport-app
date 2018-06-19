@@ -242,7 +242,9 @@ h2 {
 
 .dateinputs {
   display: block;
-
+  #infoP{
+    letter-spacing: 2px;
+  }
 
 }
 .datePick {
@@ -271,6 +273,7 @@ h2 {
   margin: 0 auto;
   z-index: 999;
   button{
+    outline: none;
     z-index: 999999999999;
     width: 180px;
     height: 160px;
@@ -300,5 +303,26 @@ h2 {
   display: none;
 }
 input.invalid {
-  background-color: #6d281c;
+  background-color: #7b9e78;
+}
+
+//route mege
+
+.tripjs{
+  top: 2% !important;
+}
+
+//submit button
+
+.submitBtn {
+  border: 2px solid black;
+  background-color: transparent;
+  border-radius: 43px;
+  margin-left: 48%;
+  font-size: 30px;
+  font-family: $primary-font;
+  padding: 5px 16px;
+  position: absolute;
+  bottom: 8%;
+
 }
