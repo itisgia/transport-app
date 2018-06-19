@@ -234,9 +234,9 @@ var currentValue = parseInt(inputNum.value);
 $('[data-quantity="plus"]').click(function(e){
   e.preventDefault(); // stop preventing it working as
   if (inputNum.value < 6 ) {
-      $('#inputField').val(currentValue +=1);
+      $('#inputField').val(currentValue +=1); //keep add number when + is clicked
   } else {
-      $('#inputField').val(currentValue = 1);
+      $('#inputField').val(currentValue = 1); //starting form 1
   }
 });
 
@@ -244,7 +244,7 @@ $('[data-quantity="plus"]').click(function(e){
 $('[data-quantity="minus"]').click(function(e){
     e.preventDefault(); // stop preventing it working as
     if (inputNum.value > 1 ) {
-        $('#inputField').val(currentValue += -1);
+        $('#inputField').val(currentValue += -1); //minus -1
     } else {
         $('#inputField').val(currentValue = 1);
     }
@@ -254,11 +254,17 @@ $('[data-quantity="minus"]').click(function(e){
 
 // buttons checked dynamic
 var cars = document.getElementsByClassName('car');
-var carsArray = [];
-console.log(cars);
 
 function checked (){
-  carsArray.push(cars);
-  console.log(carsArray[1].value);
-}
+  // carsArray.push(cars);
+  for(var i = 0; i < cars.length; i++){
+    //when car buttons are clicked. background changes
+    cars[i].addEventListener('click', function (){
+      console.dir(this);
+      this.classList.toggle('change');
+
+
+    } ,false) //event lister
+  }//for loop ENDS
+}//function ENDS
 checked();

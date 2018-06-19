@@ -172,6 +172,8 @@ h2 {
       height: 100%; }
     .carinputs button p {
       letter-spacing: 3px; }
+  .carinputs .change {
+    background-color: #6398b7; }
 
 .page {
   display: none; }
