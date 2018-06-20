@@ -21,28 +21,19 @@ map.addControl(new MapboxDirections({
 
 $( function() {
 
-  $('#datepicker').datepicker({onSelect: function(dateStr) {
-      var dateA = $(this).datepicker('getDate');
-      console.log(dateA);
-      return dateA;
-}});
+  var select=function(dateStr) {
+      var d1 = $('#datepicker').datepicker('getDate');
+      var d2 = $('#datepickerB').datepicker('getDate');
+      var timeDiff = d2 - d1;
+      var daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      console.log(daysDiff);
+  }
 
-$('#datepickerB').datepicker({onSelect: function(dateStr) {
-    var dateB = $(this).datepicker('getDate');
-    console.log(dateB);
-    return;
-}});
+    //start date
+    $('#datepicker').datepicker({onSelect: select});
 
-console.log(dateA);
-// //get values of two dates
-// var startDate = Date.parse(fromDate.value);
-//             var endDate = Date.parse(endDate.value);
-//             var timeDiff = endDate - startDate;
-//             daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-//             console.log(startDate);
-//
-//
-//             console.log(fromDate.value);
+    //end Date
+    $('#datepickerB').datepicker({onSelect: select});
 });
 
 
