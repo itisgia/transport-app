@@ -17,13 +17,38 @@ map.addControl(new MapboxDirections({
 }), 'top-right');
 //miles to km
 
-//-------------------date picker----------------
+//-------------------date picker && date calculate----------------
 
 $( function() {
-  $( "#datepicker" ).datepicker();
-  $( "#datepickerB" ).datepicker();
 
+  $('#datepicker').datepicker({onSelect: function(dateStr) {
+      var dateA = $(this).datepicker('getDate');
+      console.log(dateA);
+      return dateA;
+}});
+
+$('#datepickerB').datepicker({onSelect: function(dateStr) {
+    var dateB = $(this).datepicker('getDate');
+    console.log(dateB);
+    return;
+}});
+
+console.log(dateA);
+// //get values of two dates
+// var startDate = Date.parse(fromDate.value);
+//             var endDate = Date.parse(endDate.value);
+//             var timeDiff = endDate - startDate;
+//             daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+//             console.log(startDate);
+//
+//
+//             console.log(fromDate.value);
 });
+
+
+  //calculate how long they travel in NZ
+
+
 
 // --------form page function------------------------------------------------------------------------------------------
 
@@ -127,16 +152,15 @@ $('[data-quantity="minus"]').click(function(e){
 
 // buttons checked dynamic
 var cars = document.getElementsByClassName('car');
-
 function checked (){
   // carsArray.push(cars);
   for(var i = 0; i < cars.length; i++){
     //when car buttons are clicked. background changes
     cars[i].addEventListener('click', function (){
       console.dir(this);
-      this.classList.toggle('change');
-
-
+      this.classList.add('change'); // when car is clicked, background color toggle.
+      this.classList.remove('change');
+      // this.classList.remove('change');
     } ,false) //event lister
   }//for loop ENDS
 }//function ENDS
@@ -162,8 +186,8 @@ $(function() {
 
 //if I'm ready btn is clicked, show Results
 
-  var subBtn = document.querySelector('.submitBtn');
-  var formDiv = document.querySelector('.needs-validation');
+var subBtn = document.querySelector('.submitBtn');
+var formDiv = document.querySelector('.needs-validation');
   console.dir(formDiv);
 
   subBtn.addEventListener('click', function (){
