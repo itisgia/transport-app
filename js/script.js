@@ -1,13 +1,8 @@
 
 // // SETTING UP MAP ---------------------------------------------------------------
-//
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiamlhaGt3b24iLCJhIjoiY2ppOWR0b3Q2MHZoeTNwcGFwdjRqcGx2YyJ9.OCQ5S6NvpQir0tyfiUD3vQ';
 
-// works within NZ
-// var bounds = [
-//   [-34.23025627,172.43635083],
-//   [-47.29064213,167.27277661]
-// ]
 var map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/jiahkwon/cji9fzmxi2hdd2smlfizy96tl'
@@ -22,7 +17,7 @@ map.addControl(new MapboxDirections({
 }), 'top-right');
 //miles to km
 
-//-------------------date picker--------
+//-------------------date picker----------------
 
 $( function() {
   $( "#datepicker" ).datepicker();
@@ -30,26 +25,6 @@ $( function() {
 
 });
 
-//date validation
-
-
-//--fullPage
-// $(document).ready(function() {
-//     $('#fullpage').fullpage({
-//       controlArrows: 'left',
-//       css3: true,
-//       navigationPosition: 'right',
-//       fitToSection: true,
-//       sectionsColor : ['#1bbc9b', '#e78205'],
-//       menu: '#menu',
-//       scrollingSpeed: 1000,
-//       continuousVertical: false,
-//
-//       //design
-//       controlArrows: true,
-//
-//     });
-// });
 // --------form page function------------------------------------------------------------------------------------------
 
 
@@ -61,17 +36,6 @@ var formpages = document.querySelectorAll('.page');
 var directionsBtn = document.querySelectorAll('.pageDirection');
 var formArray = [].slice.call(formpages);
 var currentPage = 0 ; // currentpage shows
-
- // show just one div
-
-// function CurrentPageShow(){
-//   if (formArray[0]) {
-//      formArray[1].style.display = 'none';
-//      formArray[2].style.display = 'none';
-//      previousArrow.style.display = 'none';
-//   }
-// }
-// CurrentPageShow()
 
 //---------------------------- form validation and page steps form w3 school
 
@@ -134,46 +98,6 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
   return valid; // return the valid status
   }
 
-// form steps form me. logical thingking needed
-// // when next arrow is clicked. show next pages.
-// nextArrow.addEventListener('click' , nextPageArrow , false);
-// previousArrow.addEventListener('click' , backArrow , false);
-//
-// // when right arrow is clicked, move to next page
-// function nextPageArrow() {
-//   console.log(formArray);
-//     nextArrowArray.push(nextArrow);
-//     console.log(nextArrowArray);
-//     //hide and show divs
-//       previousArrow.style.display = 'block';
-//       if ((formArray.length == 1 ) < (nextArrowArray.length == 1 )) {
-//         formArray[0].style.display = 'none';
-//         formArray[1].style.display = 'block';
-//         formArray[2].style.display = 'none';
-//
-//       } else if ((formArray.length == 2 ) < (nextArrowArray.length ==2 )) {
-//         formArray[0].style.display = 'none';
-//         formArray[1].style.display = 'none';
-//         formArray[2].style.display = 'block';
-//       }
-//  validateForm();
-// }
-//
-//
-// function backArrow () {
-//   previousArrowArray.push(previousArrow);
-//   console.log(previousArrowArray);
-//     if ((formArray[0] ) && (previousArrowArray[0]) ) {
-//       formArray[0].style.display = 'block';
-//       formArray[1].style.display = 'none';
-//       formArray[2].style.display = 'none';
-//     } else if ((formArray.length == 2) < (previousArrowArray.length == 2)) {
-//       formArray[0].style.display = 'none';
-//       formArray[1].style.display = 'block';
-//       formArray[2].style.display = 'none';
-//     }
-// }
-
 
 //------------------------ input button
 var inputNum = document.querySelector('.input-group-field');
@@ -221,28 +145,27 @@ checked();
 
 //trip.js
 $(function() {
-        var trip = new Trip([
-          {
-            sel: $('.mapbox-directions-origin'),
-            content: 'Choose your route!',
-            // expose: true,
-            position: 'w'
-          },
-        ], {
-          delay: -1,
-          showCloseBox: true
-        });
-        trip.start();
-    });
+    var trip = new Trip([
+      {
+        sel: $('.mapbox-directions-origin'),
+        content: 'Choose your route!',
+        position: 'w'
+      },
+     ],
+     {
+       delay: -1,
+       showCloseBox: true
+     });
+     trip.start();
+  });
 
 
 //if I'm ready btn is clicked, show Results
 
-var subBtn = document.querySelector('.submitBtn');
-console.log(subBtn);
-var formDiv = document.querySelector('.needs-validation');
-console.dir(formDiv);
+  var subBtn = document.querySelector('.submitBtn');
+  var formDiv = document.querySelector('.needs-validation');
+  console.dir(formDiv);
 
-subBtn.addEventListener('click', function (){
-  console.log('clicked');
-},false)
+  subBtn.addEventListener('click', function (){
+    console.log('clicked');
+  },false)
