@@ -14,13 +14,15 @@ var map = new mapboxgl.Map({
     // maxBounds: bounds
 });
 
-
 map.addControl(new MapboxDirections({
     accessToken: mapboxgl.accessToken,
     unit: 'metric'//miles to km
 }), 'top-right');
 
-
+function buttonDisable(){
+  console.log($('#mapbox-directions-origin-input.[3]'));
+}
+buttonDisable()
 
 // set two directions
  // $('fa-angle-right').prop('disabled', true)
@@ -106,6 +108,7 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
       var x, y, i, valid = true;
       var x = document.getElementsByClassName('page');
       y = x[currentTab].getElementsByTagName('input');
+      console.log(y);
   // A loop that checks every input field in the current tab:
       for (i = 0; i < y.length; i++) {
         // If a field is empty...
