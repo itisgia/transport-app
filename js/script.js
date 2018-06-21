@@ -19,18 +19,26 @@ map.addControl(new MapboxDirections({
 
 //-------------------date picker && date calculate----------------
 
+
+//code refactoring
 $( function() {
 
   var select=function(dateStr) {
+      var resultText = document.querySelector('.datechoosen');
       var d1 = $('#datepicker').datepicker('getDate');
       var d2 = $('#datepickerB').datepicker('getDate');
       var timeDiff = d2 - d1;
       var daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
       console.log(daysDiff);
+      resultText.innerText = 'You\'re traveling with ' + daysDiff + ' days'
+      if ( daysDiff > 15) {
+        alert('you\'ve selected more than 15 days 👻')
+      }
   }
-
     //start date
-    $('#datepicker').datepicker({onSelect: select});
+    $('#datepicker').datepicker({
+      onSelect: select
+    });
 
     //end Date
     $('#datepickerB').datepicker({onSelect: select});
@@ -125,7 +133,7 @@ $('[data-quantity="plus"]').click(function(e){
   if (inputNum.value < 6 ) {
       $('#inputField').val(currentValue +=1); //keep add number when + is clicked
   } else {
-      $('#inputField').val(currentValue = 1); //starting form 1
+      $('#inputField').val(currentValue = 6); //maximum 6
   }
 });
 
@@ -135,7 +143,7 @@ $('[data-quantity="minus"]').click(function(e){
     if (inputNum.value > 1 ) {
         $('#inputField').val(currentValue += -1); //minus -1
     } else {
-        $('#inputField').val(currentValue = 1);
+        $('#inputField').val(currentValue = 1); //minimum 1
     }
 });
 
@@ -149,8 +157,8 @@ function checked (){
     //when car buttons are clicked. background changes
     cars[i].addEventListener('click', function (){
       console.dir(this);
-      this.classList.add('change'); // when car is clicked, background color toggle.
-      this.classList.remove('change');
+      this.classList.toggle('change'); // when car is clicked, background color toggle.
+      // this.classList.remove('change');
       // this.classList.remove('change');
     } ,false) //event lister
   }//for loop ENDS
