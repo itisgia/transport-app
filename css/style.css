@@ -1,7 +1,7 @@
 * {
-  marin: 0 auto;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  margin: 0 auto; }
 
 .wrapper {
   position: relative;
@@ -36,7 +36,8 @@
 p {
   font-family: "PT Sans", sans-serif;
   font-size: 20px;
-  text-align: center; }
+  text-align: center;
+  color: black; }
 
 h2 {
   letter-spacing: 3px !important;
@@ -91,6 +92,10 @@ h2 {
 
 #invalidText {
   color: #a00303; }
+
+.pDiv {
+  width: 80%;
+  margin: 0 auto; }
 
 .dateDiv {
   margin-top: 10%; }
@@ -152,14 +157,43 @@ h2 {
   font-family: "PT Sans", sans-serif;
   background: transparent;
   border: 2px solid #212529;
-  margin-left: 25%; }
+  margin-left: 25%;
+  outline: none; }
 
 .numberOfPeople p {
   padding-top: 13%; }
 
 .carDiv {
   margin-top: 7%;
-  margin-left: 7%; }
+  margin-left: 16%;
+  margin-top: 3%; }
+  .carDiv .bikeDisable {
+    margin-left: 27%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    font-size: 150px; }
+  .carDiv .smallcarDisable {
+    right: 0;
+    margin-right: 20%;
+    top: 0;
+    position: absolute;
+    font-size: 150px; }
+  .carDiv .largecarDisable {
+    margin-top: 34%;
+    left: 0;
+    margin-left: 27%;
+    top: 0;
+    position: absolute;
+    font-size: 150px; }
+  .carDiv .motorHomeDisable {
+    bottom: 0;
+    margin-top: 34%;
+    right: 0;
+    margin-right: 20%;
+    top: 0;
+    position: absolute;
+    font-size: 150px; }
 
 .carinputs {
   position: absolute;
@@ -167,25 +201,29 @@ h2 {
   z-index: 999; }
   .carinputs button {
     outline: none;
-    z-index: 999999999999;
-    width: 180px;
-    height: 160px;
+    width: 150px;
+    height: 130px;
     background-color: transparent;
     border: 2px solid #212529;
     border-radius: 90px;
     margin-left: 10%;
-    margin-bottom: 12%; }
+    margin-bottom: 14%; }
     .carinputs button img {
       display: block;
       width: 100%;
       height: 100%; }
     .carinputs button p {
       display: block;
-      padding-top: 9px;
+      padding-top: 2px;
       letter-spacing: 3px; }
       .carinputs button p span {
+        display: block;
         font-size: 16px;
         letter-spacing: 0px; }
+  .carinputs button:disabled {
+    color: #646a72; }
+  .carinputs p:disabled {
+    color: black; }
   .carinputs .change {
     background-color: #6398b7; }
 
@@ -198,6 +236,9 @@ input.invalid {
 .tripjs {
   top: 2% !important; }
 
+.resultDiv {
+  display: none; }
+
 .submitBtn {
   border: 2px solid black;
   background-color: transparent;
@@ -208,6 +249,7 @@ input.invalid {
   padding: 5px 16px;
   position: absolute;
   bottom: 8%;
-  z-index: 1; }
+  z-index: 1;
+  outline: none; }
 
 /*# sourceMappingURL=style.css.map */

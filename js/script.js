@@ -1,6 +1,5 @@
 
 
-
 //variables
 
 var day = 0;
@@ -258,9 +257,6 @@ var getInputValue = document.getElementById('inputField').value;
     }
 }
 
-function bikeSelect () {
-
-}
 
 
 
