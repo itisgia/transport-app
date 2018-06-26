@@ -29,7 +29,6 @@ map.addControl(new MapboxDirections({
 
 
 //code refactoring
-
   var select=function(dateStr) {
       var resultText = document.querySelector('.datechoosen');
       var d1 = $('#datepicker').datepicker('getDate');
@@ -43,8 +42,6 @@ map.addControl(new MapboxDirections({
       }
   }
     //start date
-
-
     $('#datepicker').datepicker({
         minDate: 0,
         onSelect: select ,
@@ -54,13 +51,15 @@ map.addControl(new MapboxDirections({
     });
     //end Date
     $('#datepickerB').datepicker({
-
         onSelect: select,
         beforeShow: function() {
            $(this).datepicker('option', 'minDate', $('#datepicker').val());
-    if ($('#datepicker').val() === '') $(this).datepicker('option', 'minDate', 0);
+        if ($('#datepicker').val() === '') $(this).datepicker('option', 'minDate', 0);
                     }
     });
+
+
+
 
 
 
@@ -70,6 +69,8 @@ $('.submitBtn').click(function(){
   $('.needs-validation').hide();
   $('.resultDiv').show();
   $('.bottomFIx').hide();
+  bikeSelect();
+
 
 });
 
@@ -188,17 +189,11 @@ $('[data-quantity="minus"]').click(function(e){
 
 
 // buttons checked dynamic
-var cars = document.getElementsByClassName('car');
-function checked (){
-    for(var i = 0; i < cars.length; i++){
-      //when car buttons are clicked. background changes
-      cars[i].addEventListener('click', function (){
-        console.dir(this);
-        this.classList.toggle('change'); // when car is clicked, background color toggle.
-      } ,false) //event lister
-    }//for loop ENDS
-}//function ENDS
-checked();
+$('.car').removeClass('change');
+  $('.car').click(function (){
+     $('.car').removeClass('change');
+     $(this).addClass('change');
+  })
 
 // trip.js
 $(function() {
@@ -270,6 +265,32 @@ var getInputValue = document.getElementById('inputField').value;
       $('#motorHome').attr('disabled',false);
     }
 }
+
+function bikeSelect(){
+  if (($('#bike')["0"].value)) {
+
+    alert('bike has selected');
+
+} else if (($('#smallCar')["0"].value)) {
+  alert('small has selected');
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
