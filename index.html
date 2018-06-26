@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset='utf-8' />
-  <title>Display a map</title>
+  <title>Carro</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,7 +25,10 @@
 
         <form class="needs-validation" novalidate>
           <div class="page">
-            <p>Choose your start point and end point</p>
+              <div class="pDiv">
+                  <p id="">Hello! Welcome to Carro rental service <br>We'd love to give you best options while you're traveling NZ with us <br><br> Here are some steps to use Carro<br><br>1. Choose your travel route <br>2. Select dates <br> 3. Number of people <br> 4. Choose your vehicle </p>
+              </div>
+
           </div>
           <div class="page">
               <div class="dateinputs">
@@ -66,34 +69,40 @@
 
         </div>
         <div class="page">
+            <p>What car would you like to drive?</p>
             <div class="carinputs">
-              <p>What car would you like to drive?</p>
+
               <div class="carDiv">
                 <button  class="car"id="bike"type="button" name="button" value="bike">
                   <img src="img/bike.png" alt="bike">
+                  <i class="fa fa-times bikeDisable"></i>
                   <p>Bike <br><span> $109 a day </sapn></p>
                 </button>
                 <button  class="car"id="smallCar"type="button" name="button" value="smallcar">
                   <img src="img/smallCar.png" alt="smallCar">
+                  <i class="fa fa-times smallcarDisable"></i>
                   <p>Small Car<br><span> $129 a day </sapn></p>
                 </button>
                 <button class="car"id="largeCar"type="button" name="button"value="largecar">
                   <img src="img/largeCar.png" alt="largeCar">
+                  <i class="fa fa-times largecarDisable"></i>
                   <p>Large Car<br><span> $144 a day </sapn></p>
                 </button>
                 <button class="car"id="motorHome"type="button" name="button" value="motorhome">
                   <img src="img/motorHome.webp" alt="motorHome">
                   <p>Motor Home<br><span> $200 a day </sapn></p>
+                  <i class="fa fa-times motorHomeDisable"></i>
+
                 </button>
               </div>
           </div>
           <button class="submitBtn"type="button" name="button">I'm ready to go!</button>
       </div>
-      <!-- <div class="page">
-        <h2>Results</h2>
-      </div> -->
 
         </form>
+        <div class="resultDiv">
+          <p>result</p>
+        </div>
         <div class="bottomFIx">
             <div class="pageDirection">
               <i class="fa fa-angle-left" onclick="nextPrev(-1)" ></i>
@@ -102,6 +111,7 @@
         </div>
 
       </div>
+
     </div>
 
 

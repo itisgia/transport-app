@@ -1,9 +1,14 @@
 
 
+
 //variables
 
 var day = 0;
 var distance = 0;
+var formDiv = document.querySelector('.needs-validation');
+
+
+
 // // SETTING UP MAP ---------------------------------------------------------------
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiamlhaGt3b24iLCJhIjoiY2ppOWR0b3Q2MHZoeTNwcGFwdjRqcGx2YyJ9.OCQ5S6NvpQir0tyfiUD3vQ';
@@ -19,16 +24,9 @@ map.addControl(new MapboxDirections({
     unit: 'metric'//miles to km
 }), 'top-right');
 
-function buttonDisable(){
-  console.log($('#mapbox-directions-origin-input.[3]'));
-}
-buttonDisable()
-
-// set two directions
- // $('fa-angle-right').prop('disabled', true)
 
 
-//-------------------date picker && date calculate----------------
+//------------------date picker && date calculate----------------
 
 
 //code refactoring
@@ -54,17 +52,28 @@ $( function() {
         onSelect: select});
 });
 
+
+// result pagge
+$('.submitBtn').click(function(){
+  $('.needs-validation').hide();
+  $('.resultDiv').show();
+  $('.bottomFIx').hide();
+})
+
 // --------form page function------------------------------------------------------------------------------------------
 
 
 var nextArrow = document.querySelector('.fa-angle-right');
-var nextArrowArray = [];
 var previousArrow = document.querySelector('.fa-angle-left');
-var previousArrowArray = [];
-var formpages = document.querySelectorAll('.page');
 var directionsBtn = document.querySelectorAll('.pageDirection');
-var formArray = [].slice.call(formpages);
 var currentPage = 0 ; // currentpage shows
+
+//validation vars
+var directionInput = document.getElementById('mapbox-directions-origin-input');
+var directionInputB = document.getElementById('mapbox-directions-destination-input');
+var direcValueA = directionInput.childNodes["0"].childNodes[1];
+var direcValueB = directionInputB.childNodes["0"].childNodes[1];
+
 
 //---------------------------- form validation and page steps form w3 school
 
@@ -88,7 +97,9 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
   function nextPrev(n) {
   // This function will figure out which tab to display
   // Exit the function if any field in the current tab is invalid:
-      if (n == 1 && !validateForm()) return false;
+      if (n == 1 && !validateForm())
+      return false;
+
       // Hide the current tab:
       x[currentTab].style.display = "none";
       // Increase or decrease the current tab by 1:
@@ -99,29 +110,43 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
         document.querySelector('.needs-validation').submit();
         return false;
   }
+
   // Otherwise, display the correct tab:
     showTab(currentTab);
+    valueSelection();
+
   }
 
   function validateForm() {
   // This function deals with validation of the form fields
       var x, y, i, valid = true;
       var x = document.getElementsByClassName('page');
-      y = x[currentTab].getElementsByTagName('input');
+      y = x[currentTab].getElementsByClassName('datePick');
       console.log(y);
   // A loop that checks every input field in the current tab:
       for (i = 0; i < y.length; i++) {
         // If a field is empty...
-        if (y[i].value == '') {
+        if (y[i].value == "") {
           // add an "invalid" class to the field:
           y[i].className += " invalid";
           // and set the current valid status to false
           valid = false;
         }
       }
+      if (direcValueA.value == "") {
+          btnValidation ()
+       valid = false;
+    } else if (direcValueB.value == "") {
+      btnValidation ()
+      valid = false;
+
+    }
       return valid; // return the valid status
   }
 
+function btnValidation () {
+   $('.fa-angle-right').attr('disabled',true);
+}
 
 //------------------------ input button
 var inputNum = document.querySelector('.input-group-field');
@@ -161,8 +186,8 @@ function checked (){
 }//function ENDS
 checked();
 
+// trip.js
 
-//trip.js
 $(function() {
     var trip = new Trip([
       {
@@ -178,13 +203,65 @@ $(function() {
      trip.start();
   });
 
+// car selection value
+function valueSelection() {
+var getInputValue = document.getElementById('inputField').value;
+
+    if ( getInputValue == 1 ) {
+       $('.bikeDisable')["0"].style.display = 'none';
+       $('.smallcarDisable')["0"].style.display = 'none';
+       $('.largecarDisable')["0"].style.display = 'none';
+       $('.motorHomeDisable')["0"].style.display = 'block';
+       $('#motorHome').attr('disabled',true);
+    } else if ( getInputValue == 2){
+      $('.bikeDisable')["0"].style.display = 'block';
+      $('.smallcarDisable')["0"].style.display = 'none';
+      $('.largecarDisable')["0"].style.display = 'none';
+      $('.motorHomeDisable')["0"].style.display = 'none';
+      $('#bike').attr('disabled',true);
+      $('#motorHome').attr('disabled',false);
+    } else if ( getInputValue == 3 ) {
+      $('.bikeDisable')["0"].style.display = 'block';
+      $('.smallcarDisable')["0"].style.display = 'block';
+      $('.largecarDisable')["0"].style.display = 'none';
+      $('.motorHomeDisable')["0"].style.display = 'none';
+      $('#bike').attr('disabled',true);
+      $('#smallCar').attr('disabled',true);
+      $('#motorHome').attr('disabled',false);
+    } else if (getInputValue == 4) {
+       $('.bikeDisable')["0"].style.display = 'block';
+       $('.largecarDisable')["0"].style.display = 'none';
+       $('.smallcarDisable')["0"].style.display = 'block';
+       $('.motorHomeDisable')["0"].style.display = 'none';
+       $('#bike').attr('disabled',true);
+       $('#smallCar').attr('disabled',true);;
+       $('#motorHome').attr('disabled',false);
+    } else if (getInputValue == 5) {
+      $('.bikeDisable')["0"].style.display = 'block';
+      $('.smallcarDisable')["0"].style.display = 'block';
+      $('.largecarDisable')["0"].style.display = 'none';
+      $('.motorHomeDisable')["0"].style.display = 'none';
+      $('#bike').attr('disabled',true);
+      $('#smallCar').attr('disabled',true);
+      $('#largeCar').attr('disabled',false);
+      $('#motorHome').attr('disabled',false);
+
+    }else {
+      $('.bikeDisable')["0"].style.display = 'block';
+      $('.smallcarDisable')["0"].style.display = 'block';
+      $('.largecarDisable')["0"].style.display = 'block  ';
+      $('.motorHomeDisable')["0"].style.display = 'none';
+      $('#bike').attr('disabled',true);
+      $('#smallCar').attr('disabled',true);
+      $('#largeCar').attr('disabled',true);
+      $('#motorHome').attr('disabled',false);
+    }
+}
+
+function bikeSelect () {
+
+}
+
+
 
 //if I'm ready btn is clicked, show Results
-
-var subBtn = document.querySelector('.submitBtn');
-var formDiv = document.querySelector('.needs-validation');
-  console.dir(formDiv);
-
-  subBtn.addEventListener('click', function (){
-    console.log('clicked');
-  },false)

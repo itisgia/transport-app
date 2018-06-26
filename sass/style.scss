@@ -2,9 +2,9 @@
 $primary-font: 'PT Sans', sans-serif;
 
 *{
-  marin: 0 auto;
   padding: 0;
   box-sizing: border-box;
+  margin: 0 auto;
 }
 
 .wrapper {
@@ -49,6 +49,7 @@ p {
   font-family: $primary-font;
   font-size: 20px;
   text-align: center;
+  color: black;
 
 }
 
@@ -188,6 +189,10 @@ h2 {
 #invalidText{
   color: #a00303;
 }
+.pDiv {
+  width: 80%;
+  margin: 0 auto;
+}
 .dateDiv {
   margin-top: 10%;
   p {
@@ -264,6 +269,7 @@ h2 {
   background: transparent;
   border : 2px solid #212529;
   margin-left: 25%;
+  outline: none;
 
 }
 .numberOfPeople{
@@ -275,6 +281,39 @@ h2 {
 .carDiv{
   margin-top: 7%;
   margin-left: 7%;
+  margin-top: 3%;
+
+  .bikeDisable{
+      margin-left: 19%;
+      left: 0;
+      top: 0;
+      position: absolute;
+      font-size: 150px;
+  }
+  .smallcarDisable{
+    right: 0;
+    margin-right: 20%;
+    top: 0;
+    position: absolute;
+    font-size: 150px;
+  }
+  .largecarDisable {
+    margin-top: 38%;
+    left: 0;
+    margin-left: 20%;
+    top: 0;
+    position: absolute;
+    font-size: 150px;
+  }
+  .motorHomeDisable{
+    bottom: 0;
+    margin-top: 38%;
+    right: 0;
+    margin-right: 20%;
+    top: 0;
+    position: absolute;
+    font-size: 150px;
+  }
 }
 .carinputs{
   position: absolute;
@@ -282,14 +321,14 @@ h2 {
   z-index: 999;
   button{
     outline: none;
-    z-index: 999999999999;
-    width: 180px;
-    height: 160px;
+    // z-index: 999999999999;
+    width: 150px;
+    height: 130px;
     background-color: transparent;
     border: 2px solid #212529;
     border-radius: 90px;
     margin-left: 10%;
-    margin-bottom: 12%;
+    margin-bottom: 14%;
     img{
       display: block;
       width: 100%;
@@ -297,13 +336,21 @@ h2 {
     }
     p{
       display: block;
-      padding-top: 9px;
+      padding-top: 2px;
       letter-spacing: 3px;
       span{
+        display: block;
+
         font-size: 16px;
         letter-spacing: 0px;
       }
     }
+  }
+  button:disabled {
+    color: #646a72;
+  }
+  p:disabled{
+    color: black;
   }
   .change{
     background-color: #6398b7;
@@ -327,6 +374,9 @@ input.invalid {
 
 //submit button
 
+.resultDiv{
+  display: none;
+}
 .submitBtn {
   border: 2px solid black;
   background-color: transparent;
@@ -338,5 +388,6 @@ input.invalid {
   position: absolute;
   bottom: 8%;
   z-index: 1;
+  outline: none;
 
 }
