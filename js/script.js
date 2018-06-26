@@ -29,7 +29,7 @@ map.addControl(new MapboxDirections({
 
 
 //code refactoring
-$( function() {
+
   var select=function(dateStr) {
       var resultText = document.querySelector('.datechoosen');
       var d1 = $('#datepicker').datepicker('getDate');
@@ -39,25 +39,40 @@ $( function() {
       console.log(daysDiff);
       resultText.innerText = 'You\'re traveling ' + daysDiff + ' days with us 🧡'
       if ( daysDiff > 15) {
-        alert('you\'ve selected more than 15 days 👻')
+        alert('you\'ve selected more than 15 days 👻');
       }
   }
     //start date
+
+
     $('#datepicker').datepicker({
-        onSelect: select
+        minDate: 0,
+        onSelect: select ,
+        beforeShow: function() {
+            $(this).datepicker('option', 'maxDate', $('#datepickerB').val())
+        }
     });
     //end Date
     $('#datepickerB').datepicker({
-        onSelect: select});
-});
+
+        onSelect: select,
+        beforeShow: function() {
+           $(this).datepicker('option', 'minDate', $('#datepicker').val());
+    if ($('#datepicker').val() === '') $(this).datepicker('option', 'minDate', 0);
+                    }
+    });
+
 
 
 // result pagge
 $('.submitBtn').click(function(){
+  //hide input pages and arrows and show result page
   $('.needs-validation').hide();
   $('.resultDiv').show();
   $('.bottomFIx').hide();
-})
+
+});
+
 
 // --------form page function------------------------------------------------------------------------------------------
 
@@ -186,7 +201,6 @@ function checked (){
 checked();
 
 // trip.js
-
 $(function() {
     var trip = new Trip([
       {
