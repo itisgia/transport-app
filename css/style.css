@@ -242,9 +242,6 @@ input.invalid {
 .tripjs {
   top: 2% !important; }
 
-.resultDiv {
-  display: none; }
-
 .submitBtn {
   border: 2px solid black;
   background-color: transparent;
@@ -257,5 +254,19 @@ input.invalid {
   bottom: 8%;
   z-index: 1;
   outline: none; }
+
+.resultDiv {
+  display: none;
+  margin-top: -8%; }
+  .resultDiv h3 {
+    text-align: center;
+    font-family: "PT Sans", sans-serif;
+    font-size: 24px; }
+  .resultDiv .topInfoDiv {
+    margin-top: 4%; }
+    .resultDiv .topInfoDiv img {
+      display: block;
+      width: 200px;
+      height: 200px; }
 
 /*# sourceMappingURL=style.css.map */

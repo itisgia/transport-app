@@ -40,6 +40,7 @@ map.addControl(new MapboxDirections({
       if ( daysDiff > 15) {
         alert('you\'ve selected more than 15 days 👻');
       }
+      $('.totalDays').text('Travel days: ' + daysDiff + ' days')
   }
     //start date
     $('#datepicker').datepicker({
