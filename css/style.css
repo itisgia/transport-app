@@ -165,40 +165,42 @@ h2 {
   padding-top: 13%; }
 
 .carDiv {
+  padding-top: 4%;
   display: flex;
-  width: 66%;
+  width: 81%;
   flex-wrap: wrap;
   justify-content: space-around; }
   .carDiv .bikeDisable {
-    margin-left: 25%;
+    margin-top: 3%;
+    margin-left: 20%;
     left: 0;
     top: 0;
     position: absolute;
     font-size: 150px; }
   .carDiv .smallcarDisable {
     right: 0;
-    margin-right: 24%;
+    margin-right: 20%;
+    margin-top: 3%;
     top: 0;
     position: absolute;
     font-size: 150px; }
   .carDiv .largecarDisable {
-    margin-top: 34%;
+    margin-top: 39%;
     left: 0;
-    margin-left: 25%;
+    margin-left: 21%;
     top: 0;
     position: absolute;
     font-size: 150px; }
   .carDiv .motorHomeDisable {
     bottom: 0;
-    margin-top: 34%;
+    margin-top: 37%;
     right: 0;
-    margin-right: 24%;
+    margin-right: 20%;
     top: 0;
     position: absolute;
     font-size: 150px; }
 
 .carinputs {
-  margin-top: 3% important;
   width: 100%;
   position: absolute;
   margin: 0 auto;
@@ -211,7 +213,7 @@ h2 {
     border: 2px solid #212529;
     border-radius: 90px;
     margin: 0% 5%;
-    margin-bottom: 20%; }
+    margin-bottom: 14%; }
     .carinputs button img {
       display: block;
       width: 100%;
