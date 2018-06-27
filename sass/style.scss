@@ -77,6 +77,7 @@ h2 {
   .fa{
     position: relative;
     padding: 43px;
+    outline: none;
 
   }
   .fa-angle-left {
@@ -279,12 +280,14 @@ h2 {
 }
 //---------------------------------------car selection-----------------
 .carDiv{
-  margin-top: 7%;
-  margin-left: 16%;
-  margin-top: 3%;
+
+  display: flex;
+  width: 66%;
+  flex-wrap: wrap;
+  justify-content: space-around;
 
 .bikeDisable{
-  margin-left: 27%;
+  margin-left: 25%;
   left: 0;
   top: 0;
   position: absolute;
@@ -292,7 +295,7 @@ h2 {
   }
   .smallcarDisable{
     right: 0;
-    margin-right: 20%;
+    margin-right: 24%;
     top: 0;
     position: absolute;
     font-size: 150px;
@@ -300,7 +303,7 @@ h2 {
   .largecarDisable {
     margin-top: 34%;
     left: 0;
-    margin-left: 27%;
+    margin-left: 25%;
     top: 0;
     position: absolute;
     font-size: 150px;
@@ -309,26 +312,27 @@ h2 {
     bottom: 0;
     margin-top: 34%;
     right: 0;
-    margin-right: 20%;
+    margin-right: 24%;
     top: 0;
     position: absolute;
     font-size: 150px;
   }
 }
 .carinputs{
+  margin-top: 3%important;
+  width: 100%;
   position: absolute;
   margin: 0 auto;
   z-index: 999;
   button{
     outline: none;
-    // z-index: 999999999999;
-    width: 150px;
-    height: 130px;
+    width: 170px;
+    height: 150px;
     background-color: transparent;
     border: 2px solid #212529;
     border-radius: 90px;
-    margin-left: 10%;
-    margin-bottom: 14%;
+    margin: 0% 5%;
+    margin-bottom: 20%;
     img{
       display: block;
       width: 100%;
@@ -352,7 +356,7 @@ h2 {
   p:disabled{
     color: black;
   }
-  .change{
+  .change, .car:hover{
     background-color: #6398b7;
   }
 }
