@@ -189,11 +189,28 @@ $('[data-quantity="minus"]').click(function(e){
 
 
 // buttons checked dynamic
+var carImage;
 $('.car').removeClass('change');
   $('.car').click(function (){
      $('.car').removeClass('change');
      $(this).addClass('change');
-  })
+     carImage = $(this).clone();
+     if (carImage["0"].value) {
+
+     }
+
+
+  });
+
+  function bikeSelect(){
+  //   if (($('#bike')["0"].value)) {
+  //
+  //     alert('bike has selected');
+  //
+  // } else if (($('#smallCar')["0"].value)) {
+  //   alert('small has selected');
+  }
+
 
 // trip.js
 $(function() {
@@ -266,18 +283,7 @@ var getInputValue = document.getElementById('inputField').value;
     }
 }
 
-function bikeSelect(){
-  if (($('#bike')["0"].value)) {
 
-    alert('bike has selected');
-
-} else if (($('#smallCar')["0"].value)) {
-  alert('small has selected');
-}
-
-
-
-}
 
 
 
