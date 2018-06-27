@@ -396,11 +396,27 @@ input.invalid {
 
 .resultDiv {
   display: none;
-  margin-top: -8%;
+  margin-top: 27%;
+  border: 2px solid #824f32;
+  margin: 9%;
+  border-radius: 10%;
+  margin-top: 36%;
+  hr{
+    color: #a85c05;
+    background-color: #a85c05;
+    height: 2px;
+    width: 25%;
+  }
+
+
   h3{
+    padding-top: 8%;
     text-align: center;
     font-family: $primary-font;
     font-size: 24px;
+  }
+  p{
+
   }
   .topInfoDiv{
     margin-top: 4%;

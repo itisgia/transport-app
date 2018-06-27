@@ -9,7 +9,7 @@ var vehicles = {
 
   },
   smallCard : {
-    name : 'Kia Picanto Si',
+    name : 'Volvo S60',
     person : [1,2],
     day : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     price : 129,
@@ -27,7 +27,7 @@ var vehicles = {
   },
 
   motorHome : {
-    name:'22222',
+    name:'HYMER DuoMobil B-SL',
     person : [2, 3, 4, 5, 6],
     day : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 , 16],
     price : 200,

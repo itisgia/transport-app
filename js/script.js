@@ -76,8 +76,7 @@ $('.submitBtn').click(function(){
   $('.needs-validation').hide();
   $('.resultDiv').show();
   $('.bottomFIx').hide();
-  bikeSelect();
-
+  $('#header').remove();
 
 });
 
@@ -206,8 +205,12 @@ $('.car').removeClass('change');
      function carSelectGetData(){
        if (carImage["0"].value == 'bike') {
          $('.yourCar').text(vehicles.motorbike.name);
+         $('#myImage').attr("src","img/bike.png");
+         $('#dayPrice').text('$' +vehicles.motorbike.price);
+
        } else if (carImage["0"].value == 'smallcar') {
          $('.yourCar').text(vehicles.smallCard.name);
+         $('#myImage').attr("src","img/smallCar.png");
        }else if (carImage["0"].value == 'largecar') {
          $('.yourCar').text(vehicles.largeCar.name);
        }else if (carImage["0"].value == 'motorhome') {
@@ -220,7 +223,7 @@ $('.car').removeClass('change');
   });
 
 
-
+console.log(vehicles.motorbike.price);
 
 // trip.js
 $(function() {
@@ -293,9 +296,6 @@ var getInputValue = document.getElementById('inputField').value;
     }
 }
 
-
-
-console.log(vehicles.motorbike.name);
 
 
 
