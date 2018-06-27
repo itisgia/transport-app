@@ -45,7 +45,6 @@ map.addControl(new MapboxDirections({
     //start date
     $('#datepicker').datepicker({
         minDate: 0,
-        onSelect: select ,
         beforeShow: function() {
             $(this).datepicker('option', 'maxDate', $('#datepickerB').val())
         }
@@ -54,10 +53,17 @@ map.addControl(new MapboxDirections({
     $('#datepickerB').datepicker({
         onSelect: select,
         beforeShow: function() {
+          var minDate = $('#datepicker').datepicker('getDate');
            $(this).datepicker('option', 'minDate', $('#datepicker').val());
-        if ($('#datepicker').val() === '') $(this).datepicker('option', 'minDate', 0);
-                    }
+           if ($('#datepicker').val() === '') $(this).datepicker('option', 'minDate', 0);
+           var maxDate = new Date(minDate.valueOf());
+           maxDate.setDate(maxDate.getDate() + 15);
+           $('#datepickerB').datepicker('option', 'maxDate', maxDate);
+          }
     });
+
+
+
 
 
 
@@ -196,21 +202,24 @@ $('.car').removeClass('change');
      $('.car').removeClass('change');
      $(this).addClass('change');
      carImage = $(this).clone();
-     if (carImage["0"].value) {
-
+     console.log(carImage["0"].value);
+     function carSelectGetData(){
+       if (carImage["0"].value == 'bike') {
+         $('.yourCar').text(vehicles.motorbike.name);
+       } else if (carImage["0"].value == 'smallcar') {
+         $('.yourCar').text(vehicles.smallCard.name);
+       }else if (carImage["0"].value == 'largecar') {
+         $('.yourCar').text(vehicles.largeCar.name);
+       }else if (carImage["0"].value == 'motorhome') {
+         $('.yourCar').text(vehicles.motorHome.name);
+       } else {
+         $('.yourCar').text('you\'ve choosen NaNs');
+       }
      }
-
-
+     carSelectGetData()
   });
 
-  function bikeSelect(){
-  //   if (($('#bike')["0"].value)) {
-  //
-  //     alert('bike has selected');
-  //
-  // } else if (($('#smallCar')["0"].value)) {
-  //   alert('small has selected');
-  }
+
 
 
 // trip.js
@@ -286,6 +295,7 @@ var getInputValue = document.getElementById('inputField').value;
 
 
 
+console.log(vehicles.motorbike.name);
 
 
 
