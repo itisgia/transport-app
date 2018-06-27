@@ -255,6 +255,9 @@ input.invalid {
   z-index: 1;
   outline: none; }
 
+.resultwrap {
+  display: none; }
+
 .resultDiv {
   display: none;
   margin-top: 27%;

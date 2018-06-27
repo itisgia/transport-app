@@ -206,7 +206,7 @@ $('.car').removeClass('change');
        if (carImage["0"].value == 'bike') {
          $('.yourCar').text(vehicles.motorbike.name);
          $('#myImage').attr("src","img/bike.png");
-         $('#dayPrice').text('$' +vehicles.motorbike.price);
+         $('#dayPrice').text('$' + vehicles.motorbike.price);
 
        } else if (carImage["0"].value == 'smallcar') {
          $('.yourCar').text(vehicles.smallCard.name);
