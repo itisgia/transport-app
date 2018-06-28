@@ -207,7 +207,7 @@ $('.car').removeClass('change');
        var day = parseInt(numbers.match(/\d+/g).map(Number)["0"]);
        var rentalcost = day * vehicles.motorbike.price;
        var distancecost = travelDistance * (vehicles.motorbike.fuel/100);
-       var total = rentalcost + distancecost
+       var total = rentalcost + distancecost;
        if (carImage["0"].value == 'bike') {
          $('.yourCar').text(vehicles.motorbike.name);
          $('#myImage').attr("src","img/bike.png");
