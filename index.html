@@ -75,7 +75,7 @@
                                 <p>Bike <br><span> $109 a day </sapn></p>
                             </button>
                             <button  class="car"id="smallCar"type="button" name="button" value="smallcar">
-                                <img src="img/smallCar.png" alt="smallCar">
+                                <img id="smallcarwidth"src="img/smallCar.png" alt="smallCar">
                                 <i class="fa fa-times smallcarDisable"></i>
                                 <p>Small Car<br><span> $129 a day </sapn></p>
                             </button>
@@ -96,20 +96,23 @@
         </form>
 
         <div class="resultwrap">
-            <img src="img/headericon.png" alt="carandmountinsiconimage">
+            <div class="imagewrap">
+                <img id="headerimage"src="img/headericon.png" alt="carandmountinsiconimage">
+            </div>
             <div class="resultDiv">
                 <h3>Your Travel e-ticket</h3>
                 <div class="topInfoDiv">
-                    <img id="myImage"src="img/car.jpeg" alt="placehilderimg">
+                        <img id="myImage"src="img/car.jpeg" alt="placehilderimg">
                     <h3 class="yourCar">Car model</h3>
+                    <p class="totalDays">days</p>
                     <p class="dayPrice">$__</p>
                 </div>
                 <div class="bottmDiv">
-                    <p class="totalCost">$</p>
-                    <p class="totalDays">days</p>
+                    <p class="km"></p>
                     <p class="fuelCost">$</p>
+
                     <hr>
-                    <p class="total">$NZD</p>
+                    <p class="totalCost">$NZD</p>
                     <p></p>
                     <img id="qrcode"src="img/qr.png" alt="qrcodeOfJourney">
               </div>

@@ -2,8 +2,10 @@
 
 //variables
 
-var day = 0;
-var distance = 0;
+
+var distance;
+var fuelCost;
+var day;
 var formDiv = document.querySelector('.needs-validation');
 
 
@@ -36,11 +38,9 @@ map.addControl(new MapboxDirections({
       var timeDiff = d2 - d1;
       var daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
       console.log(daysDiff);
-      resultText.innerText = 'You\'re traveling ' + daysDiff + ' days with us 🧡'
-      if ( daysDiff > 15) {
-        alert('you\'ve selected more than 15 days 👻');
-      }
-      $('.totalDays').text('Travel days: ' + daysDiff + ' days')
+      var day = parseInt(daysDiff);
+      resultText.innerText = 'You\'re traveling ' + day + ' days with us 🧡'
+      $('.totalDays').text('Travel days: ' + day + ' days')
   }
     //start date
     $('#datepicker').datepicker({
@@ -74,6 +74,7 @@ map.addControl(new MapboxDirections({
 $('.submitBtn').click(function(){
   //hide input pages and arrows and show result page
   $('.needs-validation').hide();
+  $('.resultwrap').show();
   $('.resultDiv').show();
   $('.bottomFIx').hide();
   $('#header').remove();
@@ -203,10 +204,15 @@ $('.car').removeClass('change');
      carImage = $(this).clone();
      console.log(carImage["0"].value);
      function carSelectGetData(){
+       var travelDistance = $('.mapbox-directions-route-summary')["0"].childNodes[1].outerText;
        if (carImage["0"].value == 'bike') {
          $('.yourCar').text(vehicles.motorbike.name);
          $('#myImage').attr("src","img/bike.png");
-         $('#dayPrice').text('$' + vehicles.motorbike.price);
+         $('.dayPrice').text('Rental Cost A Day: '+'$ ' + vehicles.motorbike.price);
+         $('.km').text('Travel Distance: ' + parseInt(travelDistance) +' km');
+         $('.fuelCost').text('Fuel Cost: ' + '$ ' + vehicles.motorbike.fuel + ' / 100 km' );
+         $('.totalCost').text('NZD$: ' + '');
+
 
        } else if (carImage["0"].value == 'smallcar') {
          $('.yourCar').text(vehicles.smallCard.name);
