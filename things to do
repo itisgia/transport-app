@@ -3,15 +3,3 @@
 3. give hover effect to < ,> so that people find it more easier t --
 4. set datepicker maximum days.
 4. add image on the top of result Div
-
-
-
-
-    fuelCost = ((Math.floor((data[0].fuelMulti * (travelDistance/100)) * 2.14)));
-    $(".h2_result_fuelcost").text("$" + fuelCost);
-    rentCost=((Math.floor(days * data[0].rentMulti)));
-    $(".h2_result_totalrentcost").text("$" + rentCost);
-    totalCost=(fuelCost + rentCost);
-    $(".h2_result_totalcost").text("$" + totalCost);
-
-    $('.btn_next4').prop('disabled', false);

@@ -144,7 +144,6 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
       var x, y, i, valid = true;
       var x = document.getElementsByClassName('page');
       y = x[currentTab].getElementsByClassName('datePick');
-      console.log(y);
   // A loop that checks every input field in the current tab:
       for (i = 0; i < y.length; i++) {
         // If a field is empty...
@@ -202,16 +201,21 @@ $('.car').removeClass('change');
      $('.car').removeClass('change');
      $(this).addClass('change');
      carImage = $(this).clone();
-     console.log(carImage["0"].value);
      function carSelectGetData(){
-       var travelDistance = $('.mapbox-directions-route-summary')["0"].childNodes[1].outerText;
+       var travelDistance = parseInt($('.mapbox-directions-route-summary')["0"].childNodes[1].outerText);
+       var numbers = $('.totalDays')["0"].innerHTML;
+       var day = parseInt(numbers.match(/\d+/g).map(Number)["0"]);
+       var rentalcost = day * vehicles.motorbike.price;
+       var distancecost = travelDistance * (vehicles.motorbike.fuel/100);
+       var total = rentalcost + distancecost
        if (carImage["0"].value == 'bike') {
          $('.yourCar').text(vehicles.motorbike.name);
          $('#myImage').attr("src","img/bike.png");
          $('.dayPrice').text('Rental Cost A Day: '+'$ ' + vehicles.motorbike.price);
-         $('.km').text('Travel Distance: ' + parseInt(travelDistance) +' km');
+         $('.km').text('Travel Distance: ' + travelDistance +' km');
          $('.fuelCost').text('Fuel Cost: ' + '$ ' + vehicles.motorbike.fuel + ' / 100 km' );
-         $('.totalCost').text('NZD$: ' + '');
+         $('.totalCost').text('NZD$: ' + total);
+         // (day * vehicles.motorbike.price)
 
 
        } else if (carImage["0"].value == 'smallcar') {

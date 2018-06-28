@@ -4,7 +4,7 @@ var vehicles = {
     person : 1 ,
     day :[1, 2, 3, 4, 5],
     price : 109,
-    distance : 100,
+    distance : 1,
     fuel : 3.7
 
   },
