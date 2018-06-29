@@ -203,30 +203,16 @@ $('.car').removeClass('change');
      $('.car').removeClass('change');
      $(this).addClass('change');
      carImage = $(this).clone();
+
      function carSelectGetData(){
-       var travelDistance = parseInt($('.mapbox-directions-route-summary')["0"].childNodes[1].outerText);
-       var numbers = $('.totalDays')["0"].innerHTML;
-       var day = parseInt(numbers.match(/\d+/g).map(Number)["0"]);
-       var rentalcost = day * vehicles.motorbike.price;
-       var distancecost = travelDistance * (vehicles.motorbike.fuel/100);
-       var total = rentalcost + distancecost;
        if (carImage["0"].value == 'bike') {
-         $('.yourCar').text(vehicles.motorbike.name);
-         $('#myImage').attr("src","img/bike.png");
-         $('.dayPrice').text('Rental Cost A Day: '+'$ ' + vehicles.motorbike.price);
-         $('.km').text('Travel Distance: ' + travelDistance +' km');
-         $('.fuelCost').text('Fuel Cost: ' + '$ ' + vehicles.motorbike.fuel + ' / 100 km' );
-         $('.totalCost').text('NZD$: ' + total);
-         // (day * vehicles.motorbike.price)
-
-
+          vehiclefuc(vehicles.motorbike);
        } else if (carImage["0"].value == 'smallcar') {
-         $('.yourCar').text(vehicles.smallCard.name);
-         $('#myImage').attr("src","img/smallCar.png");
+         vehiclefuc(vehicles.smallCard);
        }else if (carImage["0"].value == 'largecar') {
-         $('.yourCar').text(vehicles.largeCar.name);
+         vehiclefuc(vehicles.largeCar);
        }else if (carImage["0"].value == 'motorhome') {
-         $('.yourCar').text(vehicles.motorHome.name);
+         vehiclefuc(vehicles.motorHome);
        } else {
          $('.yourCar').text('you\'ve choosen NaNs');
        }
@@ -235,8 +221,20 @@ $('.car').removeClass('change');
   });
 
 
-console.log(vehicles.motorbike.price);
-
+function vehiclefuc(obj){
+  var travelDistance = parseInt($('.mapbox-directions-route-summary')["0"].childNodes[1].outerText);
+  var numbers = $('.totalDays')["0"].innerHTML;
+  var day = parseInt(numbers.match(/\d+/g).map(Number)["0"]);
+  var rentalcost = day * obj.price;
+  var distancecost = travelDistance * (obj.fuel/100);
+  var total = rentalcost + distancecost;
+  $('.yourCar').text(obj.name);
+  $('#myImage').attr('src',obj.image);
+  $('.dayPrice').text('Rental Cost A Day: '+'$ ' + obj.price);
+  $('.km').text('Travel Distance: ' + travelDistance +' km');
+  $('.fuelCost').text('Fuel Cost: ' + '$ ' + obj.fuel + ' / 100 km' );
+  $('.totalCost').text('NZD$: ' + total);
+}
 // trip.js
 $(function() {
     var trip = new Trip([
@@ -253,7 +251,9 @@ $(function() {
      trip.start();
   });
 
-// car selection value
+
+
+// car selection depends on the input valu
 function valueSelection() {
 var getInputValue = document.getElementById('inputField').value;
 
