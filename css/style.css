@@ -30,7 +30,7 @@
 .mapbox-directions-clearfix {
   display: none; }
 
-.mapbox-directions-instructions-wrapper {
+.mapbox-directions-instructions {
   display: none; }
 
 p {
@@ -66,6 +66,9 @@ h2 {
   .bottomFIx .fa-angle-right {
     float: right; }
 
+.arrow:hover {
+  color: #42464c; }
+
 .pageDirection {
   font-size: 110px;
   color: #e1e4ea;
@@ -91,8 +94,25 @@ h2 {
   opacity: 0.5;
   bottom: 0; }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0; }
+
 #invalidText {
   color: #a00303; }
+
+.warning {
+  font-size: 15px;
+  color: #7c2626;
+  bottom: 0;
+  margin-bottom: 6%;
+  right: 0;
+  margin-right: 24%;
+  position: absolute;
+  display: none; }
 
 .pDiv {
   width: 80%;
@@ -134,11 +154,10 @@ h2 {
   width: 50px;
   height: 50px;
   background-color: transparent;
-  border: 2px solid #212529;
-  outline: none; }
+  border: 2px solid #212529; }
 
-.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
-  background-color: none !important; }
+button:focus, input:focus {
+  outline: 0; }
 
 .dateinputs {
   display: block; }
@@ -280,7 +299,7 @@ input.invalid {
     color: #a85c05;
     background-color: #a85c05;
     height: 2px;
-    width: 25%; }
+    width: 10%; }
   .resultDiv h3 {
     padding-top: 8%;
     text-align: center;

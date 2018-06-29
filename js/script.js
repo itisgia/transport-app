@@ -39,7 +39,7 @@ map.addControl(new MapboxDirections({
       var daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
       console.log(daysDiff);
       var day = parseInt(daysDiff);
-      resultText.innerText = 'You\'re traveling ' + day + ' days with us 🧡'
+      resultText.innerText = 'You\'re traveling ' + day + ' days'
       $('.totalDays').text('Travel days: ' + day + ' days')
   }
     //start date
@@ -167,6 +167,8 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
 
 function btnValidation () {
    $('.fa-angle-right').attr('disabled',true);
+   var warningP = document.querySelector('.warning');
+   warningP.style.display = 'block';
 }
 
 //------------------------ input button

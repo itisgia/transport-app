@@ -40,7 +40,7 @@ $primary-font: 'PT Sans', sans-serif;
   display: none;
 }
 
-.mapbox-directions-instructions-wrapper {
+.mapbox-directions-instructions {
   display: none;
 }
 
@@ -78,18 +78,19 @@ h2 {
     position: relative;
     padding: 43px;
     outline: none;
-
   }
+
   .fa-angle-left {
     float: left;
   }
   .fa-angle-right{
     float: right;
-
-
   }
 }
 
+.arrow:hover {
+  color: #42464c;
+}
 
 .pageDirection {
   font-size: 110px;
@@ -117,6 +118,13 @@ h2 {
   display: inline-block;
   opacity: 0.5;
   bottom:0
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
 }
 //index style
 
@@ -192,6 +200,16 @@ h2 {
 #invalidText{
   color: #a00303;
 }
+.warning {
+  font-size: 15px;
+  color: #7c2626;
+  bottom: 0;
+  margin-bottom: 6%;
+  right: 0;
+  margin-right: 24%;
+  position: absolute;
+  display: none;
+}
 .pDiv {
   width: 80%;
   margin: 0 auto;
@@ -237,15 +255,11 @@ h2 {
   height: 50px;
   background-color: transparent;
   border: 2px solid #212529;
-  outline: none;
-
+}
+button:focus, input:focus {
+  outline:0;
 }
 
-//datepicker color remove
-.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
-
-    background-color: none !important;
-}
 
 //------------------------second date picker form------------------------
 
@@ -424,7 +438,7 @@ input.invalid {
     color: #a85c05;
     background-color: #a85c05;
     height: 2px;
-    width: 25%;
+    width: 10%;
   }
 
 
