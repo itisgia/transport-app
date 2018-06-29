@@ -305,15 +305,17 @@ input.invalid {
     text-align: center;
     font-family: "PT Sans", sans-serif;
     font-size: 24px; }
+  .resultDiv p {
+    font-size: 15px; }
   .resultDiv .topInfoDiv {
     margin-top: 4%; }
     .resultDiv .topInfoDiv img {
       display: block;
-      width: 150px;
+      width: 180px;
       height: 160px; }
   .resultDiv .bottmDiv #qrcode {
     display: block;
-    width: 24%;
+    width: 15%;
     padding-bottom: 6%; }
 
 /*# sourceMappingURL=style.css.map */

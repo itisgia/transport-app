@@ -62,14 +62,6 @@ map.addControl(new MapboxDirections({
           }
     });
 
-
-
-
-
-
-
-
-
 // result pagge
 $('.submitBtn').click(function(){
   //hide input pages and arrows and show result page
@@ -202,8 +194,9 @@ $('.car').removeClass('change');
   $('.car').click(function (){
      $('.car').removeClass('change');
      $(this).addClass('change');
+     // get selected button's value
      carImage = $(this).clone();
-
+ // get data when calculate btn is selected
      function carSelectGetData(){
        if (carImage["0"].value == 'bike') {
           vehiclefuc(vehicles.motorbike);
@@ -228,12 +221,13 @@ function vehiclefuc(obj){
   var rentalcost = day * obj.price;
   var distancecost = travelDistance * (obj.fuel/100);
   var total = rentalcost + distancecost;
+  var totalTo = total.toFixed(2);
   $('.yourCar').text(obj.name);
   $('#myImage').attr('src',obj.image);
   $('.dayPrice').text('Rental Cost A Day: '+'$ ' + obj.price);
   $('.km').text('Travel Distance: ' + travelDistance +' km');
   $('.fuelCost').text('Fuel Cost: ' + '$ ' + obj.fuel + ' / 100 km' );
-  $('.totalCost').text('NZD$: ' + total);
+  $('.totalCost').text('Total: '+ '$ '+ totalTo +' NZD' );
 }
 // trip.js
 $(function() {
@@ -309,19 +303,4 @@ var getInputValue = document.getElementById('inputField').value;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//if I'm ready btn is clicked, show Results
+//ENDS
