@@ -349,6 +349,10 @@ input.invalid {
   outline: none;
 
 }
+.submitBtn:hover{
+  background-color: #282524;
+  color: #e78205;
+}
 .resultwrap {
   display: none;
   .imagewrap{
@@ -361,12 +365,17 @@ input.invalid {
       margin-left: 18%;
     }
   }
+  .extrainfo{
+    display: block;
+    width: 80%;
+    margin-top: 2%;
+  }
 }
 .resultDiv {
   display: none;
   margin-top: 19%;
   border: 2px solid #824f32;
-  margin: 9%;
+  margin: 9% 9% 0% 9%;
   border-radius: 10%;
   margin-top: 22%;
   hr{
@@ -377,7 +386,7 @@ input.invalid {
   }
 
 
-  h3{
+  .eTicket{
     padding-top: 8%;
     text-align: center;
     font-family: $primary-font;
@@ -388,15 +397,23 @@ input.invalid {
     font-size: 15px;
   }
   .topInfoDiv{
-    margin-top: 4%;
+    margin-top: 7%;
 
     img{
       display: block;
       width: 200px;
       height: 160px;
     }
+    .yourCar {
+      margin-top: 3%;
+      text-align: center;
+      font-family: $primary-font;
+      font-size: 24px;
+    }
   }
   .bottmDiv{
+    display: block;
+    margin-top: 3%;
     #qrcode{
           display: block;
           width: 15%;

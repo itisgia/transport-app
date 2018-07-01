@@ -225,6 +225,16 @@ function vehiclefuc(obj){
   $('.km').text('Travel Distance: ' + travelDistance +' km');
   $('.fuelCost').text('Fuel Cost: ' + '$ ' + obj.fuel + ' / 100 km' );
   $('.totalCost').text('Total: '+ '$ '+ totalTo +' NZD' );
+  $('.reference').text('#' + randNum);
+}
+
+//generate random number for reference
+var randNum = "";
+var maxLength = 8;
+
+while(randNum.toString().length < maxLength){
+ var temp = Math.floor(Math.random() * 10);
+ randNum += temp.toString();
 }
 // trip.js
 $(function() {

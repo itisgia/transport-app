@@ -280,6 +280,10 @@ input.invalid {
   z-index: 1;
   outline: none; }
 
+.submitBtn:hover {
+  background-color: #282524;
+  color: #e78205; }
+
 .resultwrap {
   display: none; }
   .resultwrap .imagewrap #headerimage {
@@ -289,12 +293,16 @@ input.invalid {
     top: 0;
     margin-top: 6%;
     margin-left: 18%; }
+  .resultwrap .extrainfo {
+    display: block;
+    width: 80%;
+    margin-top: 2%; }
 
 .resultDiv {
   display: none;
   margin-top: 19%;
   border: 2px solid #824f32;
-  margin: 9%;
+  margin: 9% 9% 0% 9%;
   border-radius: 10%;
   margin-top: 22%; }
   .resultDiv hr {
@@ -302,7 +310,7 @@ input.invalid {
     background-color: #a85c05;
     height: 2px;
     width: 10%; }
-  .resultDiv h3 {
+  .resultDiv .eTicket {
     padding-top: 8%;
     text-align: center;
     font-family: "PT Sans", sans-serif;
@@ -310,14 +318,22 @@ input.invalid {
   .resultDiv p {
     font-size: 15px; }
   .resultDiv .topInfoDiv {
-    margin-top: 4%; }
+    margin-top: 7%; }
     .resultDiv .topInfoDiv img {
       display: block;
       width: 200px;
       height: 160px; }
-  .resultDiv .bottmDiv #qrcode {
+    .resultDiv .topInfoDiv .yourCar {
+      margin-top: 3%;
+      text-align: center;
+      font-family: "PT Sans", sans-serif;
+      font-size: 24px; }
+  .resultDiv .bottmDiv {
     display: block;
-    width: 15%;
-    padding-bottom: 6%; }
+    margin-top: 3%; }
+    .resultDiv .bottmDiv #qrcode {
+      display: block;
+      width: 15%;
+      padding-bottom: 6%; }
 
 /*# sourceMappingURL=style.css.map */
