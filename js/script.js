@@ -204,7 +204,8 @@ $('.car').removeClass('change');
        } else if (carImage["0"].value == 'motorhome') {
          vehiclefuc(vehicles.motorHome);
        } else {
-         $('.yourCar').text('NaN');
+         // $('.yourCar').text('NaN');
+         vehiclefuc(obj);
        }
      }
      carSelectGetData()
