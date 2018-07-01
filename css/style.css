@@ -115,8 +115,10 @@ input[type=number]::-webkit-outer-spin-button {
   display: none; }
 
 .pDiv {
+  display: block;
   width: 80%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  margin-top: 5%; }
 
 .dateDiv {
   margin-top: 10%; }
@@ -311,7 +313,7 @@ input.invalid {
     margin-top: 4%; }
     .resultDiv .topInfoDiv img {
       display: block;
-      width: 180px;
+      width: 200px;
       height: 160px; }
   .resultDiv .bottmDiv #qrcode {
     display: block;

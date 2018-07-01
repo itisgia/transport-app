@@ -6,7 +6,6 @@
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.css' type='text/css' />
@@ -25,30 +24,28 @@
         <form class="needs-validation" novalidate>
             <div class="page">
                 <div class="pDiv">
-                    <p id="">Hello! Welcome to Carro rental service <br>We'd love to give you best options while you're traveling NZ with us <br><br> Here are some steps to use Carro<br><br>1. Choose your travel route <br>2. Select dates <br> 3. Number of people <br> 4. Choose your vehicle </p>
+                    <p id="">Welcome to <strong>Carro</strong> rental service! <br><br>We'd love to give you the best options while you're traveling NZ with us <br><br> Here are some steps to use Carro<br><br>1. Choose your travel route <br>2. Select dates <br> 3. Number of people <br> 4. Choose your vehicle </p>
                 </div>
                 <p class="warning">Please fill your route</p>
 
             </div>
             <div class="page">
                 <div class="dateinputs">
-                    <p>How long are you traveling with Carro?</p>
+                    <p>How long do you travel with Carro?</p>
                     <div class="dateDiv">
                         <p>From</p>
                         <input class="datePick"type="text" placeholder="Start Date" id="datepicker" oninput="this.className = ''" required>
                         <p id="invalidText"></p>
                         <p> To</p>
                         <input class="datePick" type="text" placeholder="End Date" id="datepickerB"  required>
-                        <p id="infoP">Maximum day is 15 days</p>
+                        <p id="infoP">Maximum length is 16 days</p>
                         <p class="datechoosen"></p>
                     </div>
-
-
               </div>
             </div>
                 <div class="page">
                     <div class="numberOfPeople">
-                          <p>How many people are you traveling with?</p>
+                          <p>How many people do you travel with?</p>
                           <div class="input-group plus-minus-input">
                           <div class="input-group-button">
                                 <button type="button" class="buttonCircle" data-quantity="minus" data-field="quantity">
@@ -62,7 +59,7 @@
                                 </button>
                           </div>
                         </div>
-                        <p>Maximum number is 6</p>
+                        <p>Maximum number of seats is 6</p>
                     </div>
 
               </div>
@@ -128,6 +125,7 @@
       </div>
 
     </div>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.js"></script>
     <script type="text/javascript" src="trip/dist/trip.min.js"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.js'></script>

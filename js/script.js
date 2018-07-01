@@ -37,10 +37,9 @@ map.addControl(new MapboxDirections({
       var d2 = $('#datepickerB').datepicker('getDate');
       var timeDiff = d2 - d1;
       var daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-      console.log(daysDiff);
       var day = parseInt(daysDiff);
-      resultText.innerText = 'You\'re traveling ' + day + ' days'
-      $('.totalDays').text('Travel days: ' + day + ' days')
+        resultText.innerText = 'You\'re traveling ' + day + ' days'
+        $('.totalDays').text('Travel days: ' + day + ' days')
   }
     //start date
     $('#datepicker').datepicker({
@@ -57,31 +56,25 @@ map.addControl(new MapboxDirections({
            $(this).datepicker('option', 'minDate', $('#datepicker').val());
            if ($('#datepicker').val() === '') $(this).datepicker('option', 'minDate', 0);
            var maxDate = new Date(minDate.valueOf());
-           maxDate.setDate(maxDate.getDate() + 15);
+           maxDate.setDate(maxDate.getDate() + 16);
            $('#datepickerB').datepicker('option', 'maxDate', maxDate);
           }
     });
 
 // result pagge
-$('.submitBtn').click(function(){
-  //hide input pages and arrows and show result page
-  $('.needs-validation').hide();
-  $('.resultwrap').show();
-  $('.resultDiv').show();
-  $('.bottomFIx').hide();
-  $('#header').remove();
+    $('.submitBtn').click(function(){
+      //hide input pages and arrows and show result page
+      $('.needs-validation').hide();
+      $('.resultwrap').show();
+      $('.resultDiv').show();
+      $('.bottomFIx').hide();
+      $('#header').remove();
 
-});
+    });
 
 
 // --------form page function------------------------------------------------------------------------------------------
-
-
-var nextArrow = document.querySelector('.fa-angle-right');
-var previousArrow = document.querySelector('.fa-angle-left');
 var directionsBtn = document.querySelectorAll('.pageDirection');
-var currentPage = 0 ; // currentpage shows
-
 //validation vars
 var directionInput = document.getElementById('mapbox-directions-origin-input');
 var directionInputB = document.getElementById('mapbox-directions-destination-input');
@@ -89,7 +82,7 @@ var direcValueA = directionInput.childNodes["0"].childNodes[1];
 var direcValueB = directionInputB.childNodes["0"].childNodes[1];
 
 
-//---------------------------- form validation and page steps form w3 school
+//---------------------------- form validation and page steps
 
 var x = document.getElementsByClassName('page');
 var currentTab = 0; // Current tab is set to be the first tab (0)
@@ -105,6 +98,9 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
       }
       if (n == (x.length - 1)) {
         document.querySelector('.fa-angle-right').style.display = "none";
+
+      } else {
+        document.querySelector('.fa-angle-right').style.display = "block";
       }
     }
 
@@ -158,14 +154,15 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
   }
 
 function btnValidation () {
-   $('.fa-angle-right').attr('disabled',true);
-   var warningP = document.querySelector('.warning');
-   warningP.style.display = 'block';
+  var warningP = document.querySelector('.warning');
+     $('.fa-angle-right').attr('disabled',true);
+     warningP.style.display = 'block';
 }
 
 //------------------------ input button
 var inputNum = document.querySelector('.input-group-field');
 var currentValue = parseInt(inputNum.value);
+
 
 // when plus is clicked, value increased
 $('[data-quantity="plus"]').click(function(e){
@@ -202,12 +199,12 @@ $('.car').removeClass('change');
           vehiclefuc(vehicles.motorbike);
        } else if (carImage["0"].value == 'smallcar') {
          vehiclefuc(vehicles.smallCard);
-       }else if (carImage["0"].value == 'largecar') {
+       } else if (carImage["0"].value == 'largecar') {
          vehiclefuc(vehicles.largeCar);
-       }else if (carImage["0"].value == 'motorhome') {
+       } else if (carImage["0"].value == 'motorhome') {
          vehiclefuc(vehicles.motorHome);
        } else {
-         $('.yourCar').text('you\'ve choosen NaNs');
+         $('.yourCar').text('NaN');
        }
      }
      carSelectGetData()
