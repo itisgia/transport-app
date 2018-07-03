@@ -31,7 +31,9 @@ map.addControl(new MapboxDirections({
 
 
 //code refactoring
-  var select=function(dateStr) {
+
+// get data calculate
+  var select= function(dateStr) {
       var resultText = document.querySelector('.datechoosen');
       var d1 = $('#datepicker').datepicker('getDate');
       var d2 = $('#datepickerB').datepicker('getDate');
@@ -39,8 +41,31 @@ map.addControl(new MapboxDirections({
       var daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
       var day = parseInt(daysDiff);
         resultText.innerText = 'You\'re traveling ' + day + ' days'
-        $('.totalDays').text('Travel days: ' + day + ' days')
+        $('.totalDays').text('Travel days: ' + day + ' days');
+
+         // vehicle selection depends on how long people travel
+          function datavehicle() {
+            if ( day < 5){
+              $('#bike').attr('disabled',false);
+              $('#smallCar').attr('disabled',false);
+              $('#largeCar').attr('disabled',false);
+              $('#motorHome').attr('disabled',false);
+            }
+             else if ( (day  > 5 ) && ( day < 11 )) {
+              $('#bike').attr('disabled',true);
+              $('.bikeDisable')["0"].style.display = 'block';
+            } else if ( day > 11 ) {
+              $('#bike').attr('disabled',true);
+              $('#smallCar').attr('disabled',true);
+              $('.smallcarDisable')["0"].style.display = 'block';
+              $('#largeCar').attr('disabled',true);
+              $('.largecarDisable')["0"].style.display = 'block';
+            }
+          }
+        datavehicle()
   }
+
+  console.log(day);
     //start date
     $('#datepicker').datepicker({
         minDate: 0,
@@ -48,6 +73,7 @@ map.addControl(new MapboxDirections({
             $(this).datepicker('option', 'maxDate', $('#datepickerB').val())
         }
     });
+
     //end Date
     $('#datepickerB').datepicker({
         onSelect: select,
@@ -60,9 +86,9 @@ map.addControl(new MapboxDirections({
            $('#datepickerB').datepicker('option', 'maxDate', maxDate);
           }
     });
-
 // result pagge
     $('.submitBtn').click(function(){
+
       //hide input pages and arrows and show result page
       $('.needs-validation').hide();
       $('.resultwrap').show();
@@ -212,6 +238,7 @@ $('.car').removeClass('change');
   });
 
 
+// final result
 function vehiclefuc(obj){
   var travelDistance = parseInt($('.mapbox-directions-route-summary')["0"].childNodes[1].outerText);
   var numbers = $('.totalDays')["0"].innerHTML;
@@ -229,6 +256,7 @@ function vehiclefuc(obj){
   $('.reference').text('#' + randNum);
 }
 
+
 //generate random number for reference
 var randNum = "";
 var maxLength = 8;
@@ -237,6 +265,7 @@ while(randNum.toString().length < maxLength){
  var temp = Math.floor(Math.random() * 10);
  randNum += temp.toString();
 }
+
 // trip.js
 $(function() {
     var trip = new Trip([
@@ -255,24 +284,25 @@ $(function() {
 
 
 
-// car selection depends on the input valu
+// car selection depends on the input value
 function valueSelection() {
-var getInputValue = document.getElementById('inputField').value;
+  var getInputValue = document.getElementById('inputField').value;
 
     if ( getInputValue == 1 ) {
+
        $('.bikeDisable')["0"].style.display = 'none';
        $('.smallcarDisable')["0"].style.display = 'none';
        $('.largecarDisable')["0"].style.display = 'none';
        $('.motorHomeDisable')["0"].style.display = 'block';
        $('#motorHome').attr('disabled',true);
-    } else if ( getInputValue == 2){
+    } else if ( getInputValue == 2 ){
       $('.bikeDisable')["0"].style.display = 'block';
       $('.smallcarDisable')["0"].style.display = 'none';
       $('.largecarDisable')["0"].style.display = 'none';
       $('.motorHomeDisable')["0"].style.display = 'none';
       $('#bike').attr('disabled',true);
       $('#motorHome').attr('disabled',false);
-    } else if ( getInputValue == 3 ) {
+    } else if ( getInputValue == 3  ) {
       $('.bikeDisable')["0"].style.display = 'block';
       $('.smallcarDisable')["0"].style.display = 'block';
       $('.largecarDisable')["0"].style.display = 'none';
@@ -280,7 +310,7 @@ var getInputValue = document.getElementById('inputField').value;
       $('#bike').attr('disabled',true);
       $('#smallCar').attr('disabled',true);
       $('#motorHome').attr('disabled',false);
-    } else if (getInputValue == 4) {
+    } else if (getInputValue == 4 ) {
        $('.bikeDisable')["0"].style.display = 'block';
        $('.largecarDisable')["0"].style.display = 'none';
        $('.smallcarDisable')["0"].style.display = 'block';
