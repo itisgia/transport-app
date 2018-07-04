@@ -57,17 +57,11 @@ map.addControl(new MapboxDirections({
             }
              else if ( (day  > 6 ) && ( day < 11 )) {
               $('#bike').attr('disabled',true);
-              for(var i = 0; i < xicons.length; i++){
-                xicons[i].style.display = 'none';
-              }
               xicons["0"].style.display = 'block';
             } else if ( day > 11 ) {
               xicons["0"].style.display = 'block';
               xicons["1"].style.display = 'block';
               xicons["2"].style.display = 'block';
-              for(var i = 0; i < xicons.length; i++){
-                xicons[i].style.display = 'none';
-              }
               $('#motorHome').attr('disabled',false);
               $('#bike').attr('disabled',true);
               $('#smallCar').attr('disabled',true);
