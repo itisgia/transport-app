@@ -1,7 +1,4 @@
-(function() {
-  'use strict';
 
-}());
 
 //variables
 
@@ -186,10 +183,12 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
     } else if (direcValueB.value == "") {
       btnValidation ()
       valid = false;
-
     }
       return valid; // return the valid status
   }
+
+
+
 
 function btnValidation () {
   var warningP = document.querySelector('.warning');
@@ -338,6 +337,3 @@ var getInputValue = document.getElementById('inputField').value;
         $('#motorHome').attr('disabled',false);
     }
 } //function ENDS
-
-
-}()); //iife ENDS
