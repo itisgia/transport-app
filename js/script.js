@@ -1,4 +1,7 @@
+(function() {
+  'use strict';
 
+}());
 
 //variables
 
@@ -32,7 +35,7 @@ map.addControl(new MapboxDirections({
 
 //code refactoring
 
-// get data calculate
+// get data calculate and push to result page
   var select = function(dateStr) {
       var resultText = document.querySelector('.datechoosen');
       var d1 = $('#datepicker').datepicker('getDate');
@@ -83,12 +86,12 @@ map.addControl(new MapboxDirections({
         onSelect: select,
         beforeShow: function() {
           var minDate = $('#datepicker').datepicker('getDate');
-           $(this).datepicker('option', 'minDate', $('#datepicker').val());
-           if ($('#datepicker').val() === '') $(this).datepicker('option', 'minDate', 0);
-           var maxDate = new Date(minDate.valueOf());
-           maxDate.setDate(maxDate.getDate() + 16);
-           $('#datepickerB').datepicker('option', 'maxDate', maxDate);
-          }
+              $(this).datepicker('option', 'minDate', $('#datepicker').val());
+              if ($('#datepicker').val() === '') $(this).datepicker('option', 'minDate', 0);
+              var maxDate = new Date(minDate.valueOf());
+              maxDate.setDate(maxDate.getDate() + 16);
+              $('#datepickerB').datepicker('option', 'maxDate', maxDate);
+        }
     });
 // result pagge
     $('.submitBtn').click(function(){
@@ -153,8 +156,9 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
 
   // Otherwise, display the correct tab:
     showTab(currentTab);
-
     var getInputValue = document.getElementById('inputField').value;
+
+     // if getInputValue isn't 0 ,function happens
       if (getInputValue != 0) {
         peopleSelection();
     }
@@ -224,30 +228,29 @@ $('[data-quantity="minus"]').click(function(e){
 var carImage;
 $('.car').removeClass('change');
   $('.car').click(function (){
-     $('.car').removeClass('change');
-     $(this).addClass('change');
+      $('.car').removeClass('change');
+      $(this).addClass('change');
      // get selected button's value
-     carImage = $(this).clone();
+      carImage = $(this).clone();
  // get data when calculate btn is selected
-     function carSelectGetData(){
-       if (carImage["0"].value == 'bike') {
-          vehiclefuc(vehicles.motorbike);
-       } else if (carImage["0"].value == 'smallcar') {
-         vehiclefuc(vehicles.smallCard);
-       } else if (carImage["0"].value == 'largecar') {
-         vehiclefuc(vehicles.largeCar);
-       } else if (carImage["0"].value == 'motorhome') {
-         vehiclefuc(vehicles.motorHome);
-       } else {
-         // $('.yourCar').text('NaN');
-         vehiclefuc(obj);
-       }
-     }
-     carSelectGetData()
+      function carSelectGetData(){
+        if (carImage["0"].value == 'bike') {
+            vehiclefuc(vehicles.motorbike);
+        } else if (carImage["0"].value == 'smallcar') {
+            vehiclefuc(vehicles.smallCard);
+         } else if (carImage["0"].value == 'largecar') {
+            vehiclefuc(vehicles.largeCar);
+         } else if (carImage["0"].value == 'motorhome') {
+            vehiclefuc(vehicles.motorHome);
+         } else {
+            vehiclefuc(obj);
+        }
+      }
+       carSelectGetData()
   });
 
 
-// final result
+// final result function
 function vehiclefuc(obj){
   var travelDistance = parseInt($('.mapbox-directions-route-summary')["0"].childNodes[1].outerText);
   var numbers = $('.totalDays')["0"].innerHTML;
@@ -256,23 +259,23 @@ function vehiclefuc(obj){
   var distancecost = travelDistance * (obj.fuel/100);
   var total = rentalcost + distancecost;
   var totalTo = total.toFixed(2);
-  $('.yourCar').text(obj.name);
-  $('#myImage').attr('src',obj.image);
-  $('.dayPrice').text('Rental Cost A Day: '+'$ ' + obj.price);
-  $('.km').text('Travel Distance: ' + travelDistance +' km');
-  $('.fuelCost').text('Fuel Cost: ' + '$ ' + obj.fuel + ' / 100 km' );
-  $('.totalCost').text('Total: '+ '$ '+ totalTo +' NZD' );
-  $('.reference').text('#' + randNum);
+      $('.yourCar').text(obj.name);
+      $('#myImage').attr('src',obj.image);
+      $('.dayPrice').text('Rental Cost A Day: '+'$ ' + obj.price);
+      $('.km').text('Travel Distance: ' + travelDistance +' km');
+      $('.fuelCost').text('Fuel Cost: ' + '$ ' + obj.fuel + ' / 100 km' );
+      $('.totalCost').text('Total: '+ '$ '+ totalTo +' NZD' );
+      $('.reference').text('#' + randNum);
 }
 
 
-//generate random number for reference
+//generate random number for reference code
 var randNum = "";
 var maxLength = 8;
 
 while(randNum.toString().length < maxLength){
- var temp = Math.floor(Math.random() * 10);
- randNum += temp.toString();
+    var temp = Math.floor(Math.random() * 10);
+      randNum += temp.toString();
 }
 
 // trip.js
@@ -285,8 +288,8 @@ $(function() {
       },
      ],
      {
-       delay: -1,
-       showCloseBox: true
+        delay: -1,
+        showCloseBox: true
      });
      trip.start();
   });
@@ -299,41 +302,42 @@ function peopleSelection() {
 
 var getInputValue = document.getElementById('inputField').value;
 
+// if the value == number , show x icons
     if ( getInputValue == 1 ) {
-       $('.motorHomeDisable')["0"].style.display = 'block';
-       $('#motorHome').attr('disabled',true);
+        $('.motorHomeDisable')["0"].style.display = 'block';
+        $('#motorHome').attr('disabled',true);
     } else if ( getInputValue == 2 ){
-      $('.bikeDisable')["0"].style.display = 'block';
+        $('.bikeDisable')["0"].style.display = 'block';
 
-      $('#bike').attr('disabled',true);
-      $('#motorHome').attr('disabled',false);
+        $('#bike').attr('disabled',true);
+        $('#motorHome').attr('disabled',false);
     } else if ( getInputValue == 3 ) {
-      $('.bikeDisable')["0"].style.display = 'block';
-      $('.smallcarDisable')["0"].style.display = 'block';
-      $('#smallCar').attr('disabled',true);
-      $('#motorHome').attr('disabled',false);
+        $('.bikeDisable')["0"].style.display = 'block';
+        $('.smallcarDisable')["0"].style.display = 'block';
+        $('#smallCar').attr('disabled',true);
+        $('#motorHome').attr('disabled',false);
     } else if (getInputValue == 4 ) {
-       $('.bikeDisable')["0"].style.display = 'block';
-       $('.smallcarDisable')["0"].style.display = 'block';
-       $('#bike').attr('disabled',true);
-       $('#smallCar').attr('disabled',true);;
-       $('#motorHome').attr('disabled',false);
+        $('.bikeDisable')["0"].style.display = 'block';
+        $('.smallcarDisable')["0"].style.display = 'block';
+        $('#bike').attr('disabled',true);
+        $('#smallCar').attr('disabled',true);;
+        $('#motorHome').attr('disabled',false);
     } else if ( getInputValue == 5 ) {
 
-      $('#smallCar').attr('disabled',true);
-      $('#largeCar').attr('disabled',false);
-      $('#motorHome').attr('disabled',false);
+        $('#smallCar').attr('disabled',true);
+        $('#largeCar').attr('disabled',false);
+        $('#motorHome').attr('disabled',false);
 
     }else {
-      $('.bikeDisable')["0"].style.display = 'block';
-      $('.smallcarDisable')["0"].style.display = 'block';
-      $('.largecarDisable')["0"].style.display = 'block  ';
-      $('#bike').attr('disabled',true);
-      $('#smallCar').attr('disabled',true);
-      $('#largeCar').attr('disabled',true);
-      $('#motorHome').attr('disabled',false);
+        $('.bikeDisable')["0"].style.display = 'block';
+        $('.smallcarDisable')["0"].style.display = 'block';
+        $('.largecarDisable')["0"].style.display = 'block  ';
+        $('#bike').attr('disabled',true);
+        $('#smallCar').attr('disabled',true);
+        $('#largeCar').attr('disabled',true);
+        $('#motorHome').attr('disabled',false);
     }
-}
+} //function ENDS
 
 
-//ENDS
+}()); //iife ENDS
