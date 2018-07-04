@@ -33,7 +33,7 @@ map.addControl(new MapboxDirections({
 //code refactoring
 
 // get data calculate
-  var select= function(dateStr) {
+  var select = function(dateStr) {
       var resultText = document.querySelector('.datechoosen');
       var d1 = $('#datepicker').datepicker('getDate');
       var d2 = $('#datepickerB').datepicker('getDate');
@@ -42,30 +42,41 @@ map.addControl(new MapboxDirections({
       var day = parseInt(daysDiff);
         resultText.innerText = 'You\'re traveling ' + day + ' days'
         $('.totalDays').text('Travel days: ' + day + ' days');
-
          // vehicle selection depends on how long people travel
           function datavehicle() {
-            if ( day < 5){
+            var xicons = document.querySelectorAll('.fa-times');
+            console.dir(xicons);
+            if ( day < 6){
               $('#bike').attr('disabled',false);
               $('#smallCar').attr('disabled',false);
               $('#largeCar').attr('disabled',false);
               $('#motorHome').attr('disabled',false);
+              for(var i = 0; i < xicons.length; i++){
+                xicons[i].style.display = 'none';
+              }
             }
-             else if ( (day  > 5 ) && ( day < 11 )) {
+             else if ( (day  > 6 ) && ( day < 11 )) {
               $('#bike').attr('disabled',true);
-              $('.bikeDisable')["0"].style.display = 'block';
+              for(var i = 0; i < xicons.length; i++){
+                xicons[i].style.display = 'none';
+              }
+              xicons["0"].style.display = 'block';
             } else if ( day > 11 ) {
+              xicons["0"].style.display = 'block';
+              xicons["1"].style.display = 'block';
+              xicons["2"].style.display = 'block';
+              for(var i = 0; i < xicons.length; i++){
+                xicons[i].style.display = 'none';
+              }
+              $('#motorHome').attr('disabled',false);
               $('#bike').attr('disabled',true);
               $('#smallCar').attr('disabled',true);
-              $('.smallcarDisable')["0"].style.display = 'block';
               $('#largeCar').attr('disabled',true);
-              $('.largecarDisable')["0"].style.display = 'block';
             }
           }
-        datavehicle()
+          datavehicle();
   }
 
-  console.log(day);
     //start date
     $('#datepicker').datepicker({
         minDate: 0,
@@ -149,7 +160,12 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
 
   // Otherwise, display the correct tab:
     showTab(currentTab);
-    valueSelection();
+
+    var getInputValue = document.getElementById('inputField').value;
+      if (getInputValue != 0) {
+        console.log('working');
+        peopleSelection();
+    }
 
   }
 
@@ -209,6 +225,7 @@ $('[data-quantity="minus"]').click(function(e){
         $('#inputField').val(currentValue = 1); //minimum 1
     }
 });
+
 
 
 // buttons checked dynamic
@@ -284,46 +301,33 @@ $(function() {
 
 
 
+
 // car selection depends on the input value
-function valueSelection() {
-  var getInputValue = document.getElementById('inputField').value;
+function peopleSelection() {
+
+var getInputValue = document.getElementById('inputField').value;
 
     if ( getInputValue == 1 ) {
-
-       $('.bikeDisable')["0"].style.display = 'none';
-       $('.smallcarDisable')["0"].style.display = 'none';
-       $('.largecarDisable')["0"].style.display = 'none';
        $('.motorHomeDisable')["0"].style.display = 'block';
        $('#motorHome').attr('disabled',true);
     } else if ( getInputValue == 2 ){
       $('.bikeDisable')["0"].style.display = 'block';
-      $('.smallcarDisable')["0"].style.display = 'none';
-      $('.largecarDisable')["0"].style.display = 'none';
-      $('.motorHomeDisable')["0"].style.display = 'none';
+
       $('#bike').attr('disabled',true);
       $('#motorHome').attr('disabled',false);
-    } else if ( getInputValue == 3  ) {
+    } else if ( getInputValue == 3 ) {
       $('.bikeDisable')["0"].style.display = 'block';
       $('.smallcarDisable')["0"].style.display = 'block';
-      $('.largecarDisable')["0"].style.display = 'none';
-      $('.motorHomeDisable')["0"].style.display = 'none';
-      $('#bike').attr('disabled',true);
       $('#smallCar').attr('disabled',true);
       $('#motorHome').attr('disabled',false);
     } else if (getInputValue == 4 ) {
        $('.bikeDisable')["0"].style.display = 'block';
-       $('.largecarDisable')["0"].style.display = 'none';
        $('.smallcarDisable')["0"].style.display = 'block';
-       $('.motorHomeDisable')["0"].style.display = 'none';
        $('#bike').attr('disabled',true);
        $('#smallCar').attr('disabled',true);;
        $('#motorHome').attr('disabled',false);
-    } else if (getInputValue == 5) {
-      $('.bikeDisable')["0"].style.display = 'block';
-      $('.smallcarDisable')["0"].style.display = 'block';
-      $('.largecarDisable')["0"].style.display = 'none';
-      $('.motorHomeDisable')["0"].style.display = 'none';
-      $('#bike').attr('disabled',true);
+    } else if ( getInputValue == 5 ) {
+
       $('#smallCar').attr('disabled',true);
       $('#largeCar').attr('disabled',false);
       $('#motorHome').attr('disabled',false);
@@ -332,7 +336,6 @@ function valueSelection() {
       $('.bikeDisable')["0"].style.display = 'block';
       $('.smallcarDisable')["0"].style.display = 'block';
       $('.largecarDisable')["0"].style.display = 'block  ';
-      $('.motorHomeDisable')["0"].style.display = 'none';
       $('#bike').attr('disabled',true);
       $('#smallCar').attr('disabled',true);
       $('#largeCar').attr('disabled',true);

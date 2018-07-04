@@ -193,6 +193,8 @@ button:focus, input:focus {
   justify-content: space-around; }
   .carDiv button[disabled] {
     pointer-events: none; }
+  .carDiv .fa-times {
+    display: none; }
   .carDiv .bikeDisable {
     margin-top: 3%;
     margin-left: 20%;

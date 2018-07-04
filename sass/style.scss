@@ -240,6 +240,10 @@ button:focus, input:focus {
   button[disabled] {
   pointer-events: none;
   }
+
+  .fa-times {
+    display: none;
+  }
 .bikeDisable{
   margin-top: 3%;
   margin-left: 20%;
