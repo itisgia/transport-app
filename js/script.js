@@ -45,7 +45,6 @@ map.addControl(new MapboxDirections({
          // vehicle selection depends on how long people travel
           function datavehicle() {
             var xicons = document.querySelectorAll('.fa-times');
-            console.dir(xicons);
             if ( day < 6){
               $('#bike').attr('disabled',false);
               $('#smallCar').attr('disabled',false);
@@ -157,7 +156,6 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
 
     var getInputValue = document.getElementById('inputField').value;
       if (getInputValue != 0) {
-        console.log('working');
         peopleSelection();
     }
 
