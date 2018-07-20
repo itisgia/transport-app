@@ -1,115 +1,215 @@
 
+  var inputNum = document.querySelector('.input-group-field');
+  var currentValue = parseInt(inputNum.value);
+  var directionInput = document.getElementById('mapbox-directions-origin-input');
+  var directionInputB = document.getElementById('mapbox-directions-destination-input');
+  var direcValueA = directionInput.childNodes["0"].childNodes[1];
+  var direcValueB = directionInputB.childNodes["0"].childNodes[1];
 
-//variables
-
-
-var distance;
-var fuelCost;
-var day;
-var formDiv = document.querySelector('.needs-validation');
-
-
-
-// // SETTING UP MAP ---------------------------------------------------------------
-
-mapboxgl.accessToken = 'pk.eyJ1IjoiamlhaGt3b24iLCJhIjoiY2ppOWR0b3Q2MHZoeTNwcGFwdjRqcGx2YyJ9.OCQ5S6NvpQir0tyfiUD3vQ';
-
-var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/jiahkwon/cji9fzmxi2hdd2smlfizy96tl'
-    // maxBounds: bounds
-});
-
-map.addControl(new MapboxDirections({
-    accessToken: mapboxgl.accessToken,
-    unit: 'metric'//miles to km
-}), 'top-right');
-
-
-
-//------------------date picker && date calculate----------------
-
-
-//code refactoring
-
-// get data calculate and push to result page
-  var select = function(dateStr) {
+  //------------------date picker && date calculate----------------
+  // get data calculate and push to result page
+    var select = function(dateStr) {
       var resultText = document.querySelector('.datechoosen');
       var d1 = $('#datepicker').datepicker('getDate');
       var d2 = $('#datepickerB').datepicker('getDate');
       var timeDiff = d2 - d1;
-      var daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      var daysDiff = Math.floor(timeDiff / ( 1000 * 60 * 60 * 24 ));
       var day = parseInt(daysDiff);
-        resultText.innerText = 'You\'re traveling ' + day + ' days'
-        $('.totalDays').text('Travel days: ' + day + ' days');
-         // vehicle selection depends on how long people travel
-          function datavehicle() {
-            var xicons = document.querySelectorAll('.fa-times');
-            if ( day < 6){
-              $('#bike').attr('disabled',false);
-              $('#smallCar').attr('disabled',false);
-              $('#largeCar').attr('disabled',false);
-              $('#motorHome').attr('disabled',false);
-              for(var i = 0; i < xicons.length; i++){
-                xicons[i].style.display = 'none';
-              }
-            }
-             else if ( (day  > 6 ) && ( day < 11 )) {
-              $('#bike').attr('disabled',true);
-              xicons["0"].style.display = 'block';
-            } else if ( day > 11 ) {
-              xicons["0"].style.display = 'block';
-              xicons["1"].style.display = 'block';
-              xicons["2"].style.display = 'block';
-              $('#motorHome').attr('disabled',false);
-              $('#bike').attr('disabled',true);
-              $('#smallCar').attr('disabled',true);
-              $('#largeCar').attr('disabled',true);
-            }
+          resultText.innerText = 'You\'re traveling ' + day + ' days';
+          $('.totalDays').text('Travel days: ' + day + ' days');
+           // vehicle selection depends on how long people travel
+              function datavehicle() {
+                var xicons = document.querySelectorAll('.fa-times');
+                  if ( day < 6 ){
+                      $('#bike').attr('disabled',false);
+                      $('#smallCar').attr('disabled',false);
+                      $('#largeCar').attr('disabled',false);
+                      $('#motorHome').attr('disabled',false);
+                      for(var i = 0; i < xicons.length; i++){
+                          xicons[i].style.display = 'none';
+                      }
+                  } else if (( day  > 6 ) && ( day < 11 )) {
+                      $('#bike').attr('disabled',true);
+                      xicons["0"].style.display = 'block';
+                  } else if ( day > 11 ) {
+                      xicons["0"].style.display = 'block';
+                      xicons["1"].style.display = 'block';
+                      xicons["2"].style.display = 'block';
+                      $('#motorHome').attr('disabled',false);
+                      $('#bike').attr('disabled',true);
+                      $('#smallCar').attr('disabled',true);
+                      $('#largeCar').attr('disabled',true);
+                  }
+                }
+            datavehicle();
+    };
+
+      //start date
+      $('#datepicker').datepicker({
+          minDate: 0,
+          beforeShow: function() {
+              $(this).datepicker('option', 'maxDate', $('#datepickerB').val());
           }
-          datavehicle();
+      });
+
+      //end Date
+      $('#datepickerB').datepicker({
+          onSelect: select,
+          beforeShow: function() {
+            var minDate = $('#datepicker').datepicker('getDate');
+                $(this).datepicker('option', 'minDate', $('#datepicker').val());
+                if ($('#datepicker').val() === '') $(this).datepicker('option', 'minDate', 0);
+                var maxDate = new Date(minDate.valueOf());
+                maxDate.setDate(maxDate.getDate() + 16);
+                $('#datepickerB').datepicker('option', 'maxDate', maxDate);
+          }
+
+      });
+
+  // when 'I'm ready to go btn is clicked
+  //hide input pages and arrows and show result page
+      $('.submitBtn').click(function(){
+          $('.needs-validation').hide();
+          $('.resultwrap').show();
+          $('.resultDiv').show();
+          $('.bottomFIx').hide();
+          $('#header').remove();
+      });
+
+  //------------------------ input button
+
+  // when plus is clicked, value increased
+  $('[data-quantity="plus"]').click(function(e){
+      e.preventDefault(); // stop preventing it working as
+      if (inputNum.value < 6 ) {
+          $('#inputField').val(currentValue +=1); //keep add number when + is clicked
+      } else {
+          $('#inputField').val(currentValue = 6); //maximum 6
+      }
+  });
+
+  // when minus is clicked, value decreased
+  $('[data-quantity="minus"]').click(function(e){
+      e.preventDefault(); // stop preventing it working as
+      if (inputNum.value > 1 ) {
+          $('#inputField').val(currentValue += -1); //minus -1
+      } else {
+          $('#inputField').val(currentValue = 1); //minimum 1
+      }
+  });
+
+
+
+  // buttons checked dynamic
+  $('.car').removeClass('change');
+    $('.car').click(function (){
+        $('.car').removeClass('change');
+        $(this).addClass('change');
+       // get selected button's value
+        var carImage = $(this).clone();
+   // get data when calculate btn is selected
+        function carSelectGetData(){
+            if (carImage["0"].value == 'bike') {
+                vehiclefuc(vehicles.motorbike);
+            } else if (carImage["0"].value == 'smallcar') {
+                vehiclefuc(vehicles.smallCard);
+            } else if (carImage["0"].value == 'largecar') {
+                vehiclefuc(vehicles.largeCar);
+            } else if (carImage["0"].value == 'motorhome') {
+                vehiclefuc(vehicles.motorHome);
+            } else {
+                vehiclefuc(obj);
+            }
+        }
+         carSelectGetData();
+    });
+
+
+  // final result function
+  // collect all the data that user has choosen
+  // date.js
+  function vehiclefuc(obj){
+    var travelDistance = parseInt($('.mapbox-directions-route-summary')["0"].childNodes[1].outerText);
+    var numbers = $('.totalDays')["0"].innerHTML;
+    var day = parseInt(numbers.match(/\d+/g).map(Number)["0"]);
+    var rentalcost = day * obj.price;
+    var distancecost = travelDistance * (obj.fuel/100);
+    var total = rentalcost + distancecost;
+    var totalTo = total.toFixed(2);
+        $('.yourCar').text(obj.name);
+        $('#myImage').attr('src',obj.image);
+        $('.dayPrice').text('Rental Cost A Day: '+'$ ' + obj.price);
+        $('.km').text('Travel Distance: ' + travelDistance +' km');
+        $('.fuelCost').text('Fuel Cost: ' + '$ ' + obj.fuel + ' / 100 km' );
+        $('.totalCost').text('Total: '+ '$ '+ totalTo +' NZD' );
+        $('.reference').text('#' + randNum);
   }
 
-    //start date
-    $('#datepicker').datepicker({
-        minDate: 0,
-        beforeShow: function() {
-            $(this).datepicker('option', 'maxDate', $('#datepickerB').val())
+
+  //generate random number for reference code
+    var randNum = "";
+    var maxLength = 8;
+        while(randNum.toString().length < maxLength){
+          var temp = Math.floor(Math.random() * 10);
+              randNum += temp.toString();
         }
+
+
+  // trip.js library
+  $(function() {
+      var trip = new Trip([
+        {
+          sel: $('.mapbox-directions-origin'),
+          content: 'Choose your route!',
+          position: 'w'
+        },
+       ],
+       {
+          delay: -1,
+          showCloseBox: true
+       });
+       trip.start();
     });
 
-    //end Date
-    $('#datepickerB').datepicker({
-        onSelect: select,
-        beforeShow: function() {
-          var minDate = $('#datepicker').datepicker('getDate');
-              $(this).datepicker('option', 'minDate', $('#datepicker').val());
-              if ($('#datepicker').val() === '') $(this).datepicker('option', 'minDate', 0);
-              var maxDate = new Date(minDate.valueOf());
-              maxDate.setDate(maxDate.getDate() + 16);
-              $('#datepickerB').datepicker('option', 'maxDate', maxDate);
+
+  // car selection depends on the input value
+  // hide and show depends on the peoople value
+  function peopleSelection() {
+    var getInputValue = document.getElementById('inputField').value;
+  // if the value == number , show x icons
+        if ( getInputValue == 1 ) {
+            $('.motorHomeDisable')["0"].style.display = 'block';
+            $('#motorHome').attr('disabled',true);
+        } else if ( getInputValue == 2 ){
+            $('.bikeDisable')["0"].style.display = 'block';
+            $('#bike').attr('disabled',true);
+            $('#motorHome').attr('disabled',false);
+        } else if ( getInputValue == 3 ) {
+            $('.bikeDisable')["0"].style.display = 'block';
+            $('.smallcarDisable')["0"].style.display = 'block';
+            $('#smallCar').attr('disabled',true);
+            $('#motorHome').attr('disabled',false);
+        } else if (getInputValue == 4 ) {
+            $('.bikeDisable')["0"].style.display = 'block';
+            $('.smallcarDisable')["0"].style.display = 'block';
+            $('#bike').attr('disabled',true);
+            $('#smallCar').attr('disabled',true);
+            $('#motorHome').attr('disabled',false);
+        } else if ( getInputValue == 5 ) {
+            $('#smallCar').attr('disabled',true);
+            $('#largeCar').attr('disabled',false);
+            $('#motorHome').attr('disabled',false);
+        }else {
+            $('.bikeDisable')["0"].style.display = 'block';
+            $('.smallcarDisable')["0"].style.display = 'block';
+            $('.largecarDisable')["0"].style.display = 'block  ';
+            $('#bike').attr('disabled',true);
+            $('#smallCar').attr('disabled',true);
+            $('#largeCar').attr('disabled',true);
+            $('#motorHome').attr('disabled',false);
         }
-    });
-// result pagge
-    $('.submitBtn').click(function(){
+  } //function ENDS
 
-      //hide input pages and arrows and show result page
-      $('.needs-validation').hide();
-      $('.resultwrap').show();
-      $('.resultDiv').show();
-      $('.bottomFIx').hide();
-      $('#header').remove();
-
-    });
-
-
-// --------form page function------------------------------------------------------------------------------------------
-var directionsBtn = document.querySelectorAll('.pageDirection');
-//validation vars
-var directionInput = document.getElementById('mapbox-directions-origin-input');
-var directionInputB = document.getElementById('mapbox-directions-destination-input');
-var direcValueA = directionInput.childNodes["0"].childNodes[1];
-var direcValueB = directionInputB.childNodes["0"].childNodes[1];
 
 
 //---------------------------- form validation and page steps
@@ -121,16 +221,16 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
   // This function will display the specified tab of the form...
       x[n].style.display = "block";
   //... and fix the Previous/Next buttons:
-      if (n == 0) {
+      if (n === 0) {
           document.querySelector('.fa-angle-left').style.display = "none";
       } else {
           document.querySelector('.fa-angle-left').style.display = "block";
       }
       if (n == (x.length - 1)) {
-        document.querySelector('.fa-angle-right').style.display = "none";
+          document.querySelector('.fa-angle-right').style.display = "none";
 
       } else {
-        document.querySelector('.fa-angle-right').style.display = "block";
+          document.querySelector('.fa-angle-right').style.display = "block";
       }
     }
 
@@ -156,7 +256,7 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
     var getInputValue = document.getElementById('inputField').value;
 
      // if getInputValue isn't 0 ,function happens
-      if (getInputValue != 0) {
+      if (getInputValue !== 0) {
         peopleSelection();
     }
 
@@ -170,170 +270,26 @@ var currentTab = 0; // Current tab is set to be the first tab (0)
   // A loop that checks every input field in the current tab:
       for (i = 0; i < y.length; i++) {
         // If a field is empty...
-        if (y[i].value == "") {
+          if (y[i].value === "") {
           // add an "invalid" class to the field:
-          y[i].className += " invalid";
+              y[i].className += " invalid";
           // and set the current valid status to false
-          valid = false;
-        }
+              valid = false;
+          }
       }
-      if (direcValueA.value == "") {
-          btnValidation ()
-       valid = false;
-    } else if (direcValueB.value == "") {
-      btnValidation ()
-      valid = false;
-    }
+      if (direcValueA.value === "") {
+          btnValidation ();
+          valid = false;
+      } else if (direcValueB.value === "") {
+          btnValidation ();
+          valid = false;
+      }
       return valid; // return the valid status
   }
 
 
-
-
-function btnValidation () {
-  var warningP = document.querySelector('.warning');
-     $('.fa-angle-right').attr('disabled',true);
-     warningP.style.display = 'block';
-}
-
-//------------------------ input button
-var inputNum = document.querySelector('.input-group-field');
-var currentValue = parseInt(inputNum.value);
-
-
-// when plus is clicked, value increased
-$('[data-quantity="plus"]').click(function(e){
-    e.preventDefault(); // stop preventing it working as
-    if (inputNum.value < 6 ) {
-        $('#inputField').val(currentValue +=1); //keep add number when + is clicked
-    } else {
-        $('#inputField').val(currentValue = 6); //maximum 6
+    function btnValidation () {
+        var warningP = document.querySelector('.warning');
+         $('.fa-angle-right').attr('disabled',true);
+         warningP.style.display = 'block';
     }
-});
-
-// when minus is clicked, value decreased
-$('[data-quantity="minus"]').click(function(e){
-    e.preventDefault(); // stop preventing it working as
-    if (inputNum.value > 1 ) {
-        $('#inputField').val(currentValue += -1); //minus -1
-    } else {
-        $('#inputField').val(currentValue = 1); //minimum 1
-    }
-});
-
-
-
-// buttons checked dynamic
-var carImage;
-$('.car').removeClass('change');
-  $('.car').click(function (){
-      $('.car').removeClass('change');
-      $(this).addClass('change');
-     // get selected button's value
-      carImage = $(this).clone();
- // get data when calculate btn is selected
-      function carSelectGetData(){
-        if (carImage["0"].value == 'bike') {
-            vehiclefuc(vehicles.motorbike);
-        } else if (carImage["0"].value == 'smallcar') {
-            vehiclefuc(vehicles.smallCard);
-         } else if (carImage["0"].value == 'largecar') {
-            vehiclefuc(vehicles.largeCar);
-         } else if (carImage["0"].value == 'motorhome') {
-            vehiclefuc(vehicles.motorHome);
-         } else {
-            vehiclefuc(obj);
-        }
-      }
-       carSelectGetData()
-  });
-
-
-// final result function
-function vehiclefuc(obj){
-  var travelDistance = parseInt($('.mapbox-directions-route-summary')["0"].childNodes[1].outerText);
-  var numbers = $('.totalDays')["0"].innerHTML;
-  var day = parseInt(numbers.match(/\d+/g).map(Number)["0"]);
-  var rentalcost = day * obj.price;
-  var distancecost = travelDistance * (obj.fuel/100);
-  var total = rentalcost + distancecost;
-  var totalTo = total.toFixed(2);
-      $('.yourCar').text(obj.name);
-      $('#myImage').attr('src',obj.image);
-      $('.dayPrice').text('Rental Cost A Day: '+'$ ' + obj.price);
-      $('.km').text('Travel Distance: ' + travelDistance +' km');
-      $('.fuelCost').text('Fuel Cost: ' + '$ ' + obj.fuel + ' / 100 km' );
-      $('.totalCost').text('Total: '+ '$ '+ totalTo +' NZD' );
-      $('.reference').text('#' + randNum);
-}
-
-
-//generate random number for reference code
-var randNum = "";
-var maxLength = 8;
-
-while(randNum.toString().length < maxLength){
-    var temp = Math.floor(Math.random() * 10);
-      randNum += temp.toString();
-}
-
-// trip.js
-$(function() {
-    var trip = new Trip([
-      {
-        sel: $('.mapbox-directions-origin'),
-        content: 'Choose your route!',
-        position: 'w'
-      },
-     ],
-     {
-        delay: -1,
-        showCloseBox: true
-     });
-     trip.start();
-  });
-
-
-
-
-// car selection depends on the input value
-function peopleSelection() {
-
-var getInputValue = document.getElementById('inputField').value;
-
-// if the value == number , show x icons
-    if ( getInputValue == 1 ) {
-        $('.motorHomeDisable')["0"].style.display = 'block';
-        $('#motorHome').attr('disabled',true);
-    } else if ( getInputValue == 2 ){
-        $('.bikeDisable')["0"].style.display = 'block';
-
-        $('#bike').attr('disabled',true);
-        $('#motorHome').attr('disabled',false);
-    } else if ( getInputValue == 3 ) {
-        $('.bikeDisable')["0"].style.display = 'block';
-        $('.smallcarDisable')["0"].style.display = 'block';
-        $('#smallCar').attr('disabled',true);
-        $('#motorHome').attr('disabled',false);
-    } else if (getInputValue == 4 ) {
-        $('.bikeDisable')["0"].style.display = 'block';
-        $('.smallcarDisable')["0"].style.display = 'block';
-        $('#bike').attr('disabled',true);
-        $('#smallCar').attr('disabled',true);;
-        $('#motorHome').attr('disabled',false);
-    } else if ( getInputValue == 5 ) {
-
-        $('#smallCar').attr('disabled',true);
-        $('#largeCar').attr('disabled',false);
-        $('#motorHome').attr('disabled',false);
-
-    }else {
-        $('.bikeDisable')["0"].style.display = 'block';
-        $('.smallcarDisable')["0"].style.display = 'block';
-        $('.largecarDisable')["0"].style.display = 'block  ';
-        $('#bike').attr('disabled',true);
-        $('#smallCar').attr('disabled',true);
-        $('#largeCar').attr('disabled',true);
-        $('#motorHome').attr('disabled',false);
-    }
-} //function ENDS
