@@ -1,47 +1,51 @@
+ // vars
+    var inputNum = document.querySelector('.input-group-field');
+    var currentValue = parseInt(inputNum.value);
+    var directionInput = document.getElementById('mapbox-directions-origin-input');
+    var directionInputB = document.getElementById('mapbox-directions-destination-input');
+    var direcValueA = directionInput.childNodes["0"].childNodes[1];
+    var direcValueB = directionInputB.childNodes["0"].childNodes[1];
+    var getInputValue = document.getElementById('inputField').value;
 
-  var inputNum = document.querySelector('.input-group-field');
-  var currentValue = parseInt(inputNum.value);
-  var directionInput = document.getElementById('mapbox-directions-origin-input');
-  var directionInputB = document.getElementById('mapbox-directions-destination-input');
-  var direcValueA = directionInput.childNodes["0"].childNodes[1];
-  var direcValueB = directionInputB.childNodes["0"].childNodes[1];
 
   //------------------date picker && date calculate----------------
+
   // get data calculate and push to result page
     var select = function(dateStr) {
-      var resultText = document.querySelector('.datechoosen');
-      var d1 = $('#datepicker').datepicker('getDate');
-      var d2 = $('#datepickerB').datepicker('getDate');
-      var timeDiff = d2 - d1;
-      var daysDiff = Math.floor(timeDiff / ( 1000 * 60 * 60 * 24 ));
-      var day = parseInt(daysDiff);
-          resultText.innerText = 'You\'re traveling ' + day + ' days';
-          $('.totalDays').text('Travel days: ' + day + ' days');
-           // vehicle selection depends on how long people travel
-              function datavehicle() {
-                var xicons = document.querySelectorAll('.fa-times');
-                  if ( day < 6 ){
-                      $('#bike').attr('disabled',false);
-                      $('#smallCar').attr('disabled',false);
-                      $('#largeCar').attr('disabled',false);
-                      $('#motorHome').attr('disabled',false);
-                      for(var i = 0; i < xicons.length; i++){
-                          xicons[i].style.display = 'none';
+        var resultText = document.querySelector('.datechoosen');
+        var d1 = $('#datepicker').datepicker('getDate');
+        var d2 = $('#datepickerB').datepicker('getDate');
+        var timeDiff = d2 - d1;
+        var daysDiff = Math.floor( timeDiff / ( 1000 * 60 * 60 * 24 ));
+        var day = parseInt(daysDiff);
+            resultText.innerText = 'You\'re traveling ' + day + ' days';
+            $('.totalDays').text('Travel days: ' + day + ' days');
+             // vehicle selection depends on how long people travel
+                function datavehicle() {
+                  var xIcons = document.querySelectorAll('.fa-times');
+                      // vehicle selectuon can be disabled depends on days
+                      if ( day < 6 ) {
+                          $('#bike').attr('disabled', false);
+                          $('#smallCar').attr('disabled', false);
+                          $('#largeCar').attr('disabled', false);
+                          $('#motorHome').attr('disabled', false);
+                          for(var i = 0; i < xicons.length; i++){
+                              xIcons[i].style.display = 'none';
+                          } // set default display as none
+                      } else if (( day > 6 ) && ( day < 11 )) {
+                          $('#bike').attr('disabled', true);
+                          xIcons["0"].style.display = 'block';
+                      } else if ( day > 11 ) {
+                          xIcons["0"].style.display = 'block';
+                          xIcons["1"].style.display = 'block';
+                          xIcons["2"].style.display = 'block';
+                          $('#motorHome').attr('disabled', false);
+                          $('#bike').attr('disabled', true);
+                          $('#smallCar').attr('disabled', true);
+                          $('#largeCar').attr('disabled', true);
                       }
-                  } else if (( day  > 6 ) && ( day < 11 )) {
-                      $('#bike').attr('disabled',true);
-                      xicons["0"].style.display = 'block';
-                  } else if ( day > 11 ) {
-                      xicons["0"].style.display = 'block';
-                      xicons["1"].style.display = 'block';
-                      xicons["2"].style.display = 'block';
-                      $('#motorHome').attr('disabled',false);
-                      $('#bike').attr('disabled',true);
-                      $('#smallCar').attr('disabled',true);
-                      $('#largeCar').attr('disabled',true);
                   }
-                }
-            datavehicle();
+              datavehicle();
     };
 
       //start date
@@ -82,7 +86,7 @@
   $('[data-quantity="plus"]').click(function(e){
       e.preventDefault(); // stop preventing it working as
       if (inputNum.value < 6 ) {
-          $('#inputField').val(currentValue +=1); //keep add number when + is clicked
+          $('#inputField').val(currentValue += 1); //keep add number when + is clicked
       } else {
           $('#inputField').val(currentValue = 6); //maximum 6
       }
@@ -107,18 +111,18 @@
         $(this).addClass('change');
        // get selected button's value
         var carImage = $(this).clone();
-   // get data when calculate btn is selected
+        // get data when calculate btn is selected
         function carSelectGetData(){
             if (carImage["0"].value == 'bike') {
-                vehiclefuc(vehicles.motorbike);
+                vehicleFuc(vehicles.motorbike);
             } else if (carImage["0"].value == 'smallcar') {
-                vehiclefuc(vehicles.smallCard);
+                vehicleFuc(vehicles.smallCard);
             } else if (carImage["0"].value == 'largecar') {
-                vehiclefuc(vehicles.largeCar);
+                vehicleFuc(vehicles.largeCar);
             } else if (carImage["0"].value == 'motorhome') {
-                vehiclefuc(vehicles.motorHome);
+                vehicleFuc(vehicles.motorHome);
             } else {
-                vehiclefuc(obj);
+                vehicleFuc(obj);
             }
         }
          carSelectGetData();
@@ -126,34 +130,32 @@
 
 
   // final result function
-  // collect all the data that user has choosen
+  // collect all the data that user has choosen / select  and add to a result div.
   // date.js
-  function vehiclefuc(obj){
-    var travelDistance = parseInt($('.mapbox-directions-route-summary')["0"].childNodes[1].outerText);
-    var numbers = $('.totalDays')["0"].innerHTML;
-    var day = parseInt(numbers.match(/\d+/g).map(Number)["0"]);
-    var rentalcost = day * obj.price;
-    var distancecost = travelDistance * (obj.fuel/100);
-    var total = rentalcost + distancecost;
-    var totalTo = total.toFixed(2);
-        $('.yourCar').text(obj.name);
-        $('#myImage').attr('src',obj.image);
-        $('.dayPrice').text('Rental Cost A Day: '+'$ ' + obj.price);
-        $('.km').text('Travel Distance: ' + travelDistance +' km');
-        $('.fuelCost').text('Fuel Cost: ' + '$ ' + obj.fuel + ' / 100 km' );
-        $('.totalCost').text('Total: '+ '$ '+ totalTo +' NZD' );
-        $('.reference').text('#' + randNum);
+  function vehicleFuc(obj){
+      var travelDistance = parseInt($('.mapbox-directions-route-summary')["0"].childNodes[1].outerText);
+      var numbers = $('.totalDays')["0"].innerHTML;
+      var day = parseInt(numbers.match(/\d+/g).map(Number)["0"]);
+      var rentalCost = day * obj.price;
+      var distanceCost = travelDistance * (obj.fuel / 100);
+      var total = rentalCost + distanceCost;
+      var totalTo = total.toFixed(2);
+          $('.yourCar').text(obj.name);
+          $('#myImage').attr('src', obj.image);
+          $('.dayPrice').text('Rental Cost A Day: ' + '$ ' + obj.price);
+          $('.km').text('Travel Distance: ' + travelDistance +' km');
+          $('.fuelCost').text('Fuel Cost: ' + '$ ' + obj.fuel + ' / 100 km' );
+          $('.totalCost').text('Total: '+ '$ '+ totalTo + ' NZD' );
+          $('.reference').text('#' + randNum);
   }
 
-
   //generate random number for reference code
-    var randNum = "";
-    var maxLength = 8;
-        while(randNum.toString().length < maxLength){
-          var temp = Math.floor(Math.random() * 10);
-              randNum += temp.toString();
-        }
-
+  var randNum = "";
+  var maxLength = 8;
+      while(randNum.toString().length < maxLength){
+        var temp = Math.floor(Math.random() * 10);
+            randNum += temp.toString();
+      }
 
   // trip.js library
   $(function() {
@@ -175,7 +177,6 @@
   // car selection depends on the input value
   // hide and show depends on the peoople value
   function peopleSelection() {
-    var getInputValue = document.getElementById('inputField').value;
   // if the value == number , show x icons
         if ( getInputValue == 1 ) {
             $('.motorHomeDisable')["0"].style.display = 'block';
@@ -214,82 +215,80 @@
 
 //---------------------------- form validation and page steps
 
-var x = document.getElementsByClassName('page');
-var currentTab = 0; // Current tab is set to be the first tab (0)
-  showTab(currentTab); // Display the crurrent tab
-  function showTab(n) {
-  // This function will display the specified tab of the form...
-      x[n].style.display = "block";
-  //... and fix the Previous/Next buttons:
-      if (n === 0) {
-          document.querySelector('.fa-angle-left').style.display = "none";
-      } else {
-          document.querySelector('.fa-angle-left').style.display = "block";
+  var x = document.getElementsByClassName('page');
+  var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the crurrent tab
+    function showTab(n) {
+    // This function will display the specified tab of the form...
+        x[n].style.display = "block";
+    //... and fix the Previous/Next buttons:
+        if (n === 0) {
+            document.querySelector('.fa-angle-left').style.display = "none";
+        } else {
+            document.querySelector('.fa-angle-left').style.display = "block";
+        }
+        if (n == (x.length - 1)) {
+            document.querySelector('.fa-angle-right').style.display = "none";
+
+        } else {
+            document.querySelector('.fa-angle-right').style.display = "block";
+        }
       }
-      if (n == (x.length - 1)) {
-          document.querySelector('.fa-angle-right').style.display = "none";
 
-      } else {
-          document.querySelector('.fa-angle-right').style.display = "block";
-      }
-    }
+    function nextPrev(n) {
+    // This function will figure out which tab to display
+    // Exit the function if any field in the current tab is invalid:
+        if (n == 1 && !validateForm())
+            return false;
+            // Hide the current tab:
+            x[currentTab].style.display = "none";
+            // Increase or decrease the current tab by 1:
+            currentTab = currentTab + n;
+        // if you have reached the end of the form...
+        if (currentTab >= x.length) {
+            // ... the form gets submitted:
+            document.querySelector('.needs-validation').submit();
+            return false;
+        }
 
-  function nextPrev(n) {
-  // This function will figure out which tab to display
-  // Exit the function if any field in the current tab is invalid:
-      if (n == 1 && !validateForm())
-      return false;
-
-      // Hide the current tab:
-      x[currentTab].style.display = "none";
-      // Increase or decrease the current tab by 1:
-      currentTab = currentTab + n;
-      // if you have reached the end of the form...
-      if (currentTab >= x.length) {
-        // ... the form gets submitted:
-        document.querySelector('.needs-validation').submit();
-        return false;
-  }
-
-  // Otherwise, display the correct tab:
-    showTab(currentTab);
-    var getInputValue = document.getElementById('inputField').value;
-
-     // if getInputValue isn't 0 ,function happens
-      if (getInputValue !== 0) {
-        peopleSelection();
-    }
-
-  }
-
-  function validateForm() {
-  // This function deals with validation of the form fields
-      var x, y, i, valid = true;
-      var x = document.getElementsByClassName('page');
-      y = x[currentTab].getElementsByClassName('datePick');
-  // A loop that checks every input field in the current tab:
-      for (i = 0; i < y.length; i++) {
-        // If a field is empty...
-          if (y[i].value === "") {
-          // add an "invalid" class to the field:
-              y[i].className += " invalid";
-          // and set the current valid status to false
-              valid = false;
+    // Otherwise, display the correct tab:
+      showTab(currentTab);
+      var getInputValue = document.getElementById('inputField').value;
+       // if getInputValue isn't 0 ,function happens
+          if (getInputValue !== 0) {
+              peopleSelection();
           }
-      }
-      if (direcValueA.value === "") {
-          btnValidation ();
-          valid = false;
-      } else if (direcValueB.value === "") {
-          btnValidation ();
-          valid = false;
-      }
-      return valid; // return the valid status
-  }
 
+    }
 
+    function validateForm() {
+    // This function deals with validation of the form fields
+        var y, i, valid = true;
+        var x = document.getElementsByClassName('page');
+        y = x[currentTab].getElementsByClassName('datePick');
+    // A loop that checks every input field in the current tab:
+        for (i = 0; i < y.length; i++) {
+          // If a field is empty...
+            if (y[i].value === "") {
+            // add an "invalid" class to the field:
+                y[i].className += " invalid";
+            // and set the current valid status to false
+                valid = false;
+            }
+        }
+        if (direcValueA.value === "") {
+            btnValidation ();
+            valid = false;
+        } else if (direcValueB.value === "") {
+            btnValidation ();
+            valid = false;
+        }
+        return valid; // return the valid status
+    }
+
+// when the input is empty this function fires
     function btnValidation () {
         var warningP = document.querySelector('.warning');
-         $('.fa-angle-right').attr('disabled',true);
+        $('.fa-angle-right').attr('disabled', true);
          warningP.style.display = 'block';
     }

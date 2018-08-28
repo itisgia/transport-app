@@ -232,14 +232,14 @@ button:focus, input:focus {
 }
 //---------------------------------------car selection-----------------
 .carDiv{
-
   padding-top: 4%;
   display: flex;
   width: 81%;
   flex-wrap: wrap;
   justify-content: space-around;
+  max-width: 500px;
   button[disabled] {
-  pointer-events: none;
+      pointer-events: none;
   }
 
   .fa-times {

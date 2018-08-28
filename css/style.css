@@ -191,7 +191,8 @@ button:focus, input:focus {
   display: flex;
   width: 81%;
   flex-wrap: wrap;
-  justify-content: space-around; }
+  justify-content: space-around;
+  max-width: 500px; }
   .carDiv button[disabled] {
     pointer-events: none; }
   .carDiv .fa-times {
